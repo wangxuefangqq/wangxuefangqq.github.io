@@ -9,6 +9,7 @@
     <script src="js/rem.js"></script>
     <script src="js/jquery.js"></script>
     <script src="js/jquery.fullPage.js"></script>
+    <script src="js/jquery.easing.js"></script>
 </head>
 <body>
 <nav>
@@ -45,12 +46,10 @@
        <div class="guanyuArea">
         <div class="neikuan">
             <div class="guanyu clear">
-                <!-- <a href=""> -->
-                    <img src="img/ww.jpg" alt="" class="guanyu_me">
-                <!-- </a> -->
+                <img src="img/ww.jpg" alt="" class="guanyu_me">
                 <div class="guanyu_zi clear">
                     <a href="" name="guanyuwode"></a>
-                        <h1>关于我的</h1>
+                    <h1>关于我的</h1>
                     
                     <h2>About me</h2>
                     <span>我是一位前端工程师,在专业技能上，为适应社会发展的需求，我认真学习各种专业知识，发挥自己的特长;挖掘自身的潜力，结合每年的暑期社会实践机会，从而逐步提高了自己的学习能力和分析处理问题的能力以及一定的协调组织和管理能力。希望2017更好。 </span>
@@ -70,7 +69,7 @@
                 <div class="jinengXq">
                         <div class="jinengXq_neirong">
                             <a href="">
-                                <img src="img/html.png" alt="" class="jinengXq_neirong_tu">
+                                <img src="img/13.png" alt="" class="jinengXq_neirong_tu">
                                 <span>熟练使用html5
                                   HTML（HyperText Mark-up Language）即超文本标记语言或超文本链接标示语言，是目前网络上应用最为广泛的语言，也是构成网页文档的主要语言。 </span>
                             </a>
@@ -78,21 +77,21 @@
                     
                     <div class="jinengXq_neirong">
                         <a href="">
-                            <img src="img/html.png" alt="" class="jinengXq_neirong_tu">
+                            <img src="img/php.png" alt="" class="jinengXq_neirong_tu">
                             <span>熟练使用html5
                             设计HTML语言的目的是为了能把存放在一台电脑中的文本或图形与另一台电脑中的文本或图形方便地联系在一起，形成有机的整体</span>
                         </a>
                     </div>
                     <div class="jinengXq_neirong">
                         <a href="">
-                            <img src="img/html.png" alt="" class="jinengXq_neirong_tu">
+                            <img src="img/jq.png" alt="" class="jinengXq_neirong_tu">
                             <span>熟练使用html5
                              HTML文本是由HTML命令组成的描述性文本，HTML命令可以说明文字、图形、动画、声音、表格、链接等。</span>
                          </a>
                     </div>
                     <div class="jinengXq_neirong">
                         <a href="">
-                            <img src="img/html.png" alt="" class="jinengXq_neirong_tu">
+                            <img src="img/14.png" alt="" class="jinengXq_neirong_tu">
                             <span>熟练使用html5
                             HTML的结构包括头部（Head）、主体（Body）两大部分，其中头部描述浏览器所需的信息，而主体则包含所要说明的具体内容。</span>
                         </a>
@@ -112,12 +111,24 @@
                 <div class="zuopin">
                     <div class="zuopin_neirong">代码,美丽而深奥，它的结合可以呈现美好的事物。</div>
                     <div class="zuopinXq_tm clear">
-                        <img src="img/zuopin1.jpg" alt="" class="zuopinXq_tm_tu1 col-lg-4 col-md-6 col-sm-12">
-                        <img src="img/zuopin1.jpg" alt="" class="zuopinXq_tm_tu1 col-lg-4 col-md-6 col-sm-12">                  
-                        <img src="img/zuopin1.jpg" alt="" class="zuopinXq_tm_tu1 col-lg-4 col-md-6 col-sm-12">
-                        <img src="img/zuopin1.jpg" alt="" class="zuopinXq_tm_tu1 col-lg-4 col-md-6 col-sm-12">
-                        <img src="img/zuopin1.jpg" alt="" class="zuopinXq_tm_tu1 col-lg-4 col-md-6 col-sm-12">
-                        <img src="img/zuopin1.jpg" alt="" class="zuopinXq_tm_tu1 col-lg-4 col-md-6 col-sm-12">
+                        <a href="">
+                            <img src="img/jd.jpg" alt="" class="zuopinXq_tm_tu1 col-lg-4 col-md-6 col-sm-12">
+                        </a>
+                        <a href="">
+                            <img src="img/tm.jpg" alt="" class="zuopinXq_tm_tu1 col-lg-4 col-md-6 col-sm-12">
+                        </a>
+                        <a href="">
+                            <img src="img/mt.jpg" alt="" class="zuopinXq_tm_tu1 col-lg-4 col-md-6 col-sm-12">
+                        </a>
+                        <a href="">
+                            <img src="img/yd.jpg" alt="" class="zuopinXq_tm_tu1 col-lg-4 col-md-6 col-sm-12">
+                        </a>
+                        <a href="">
+                            <img src="img/pg.gif" alt="" class="zuopinXq_tm_tu1 col-lg-4 col-md-6 col-sm-12">
+                        </a>
+                        <a href="">
+                            <img src="img/fk.png" alt="" class="zuopinXq_tm_tu1 col-lg-4 col-md-6 col-sm-12">
+                        </a>
                     </div>
                 </div>
             </div>
@@ -235,15 +246,8 @@
 </div>
 </body>
 <script>
+    $(".guanyu_zi h1").fadeOut(1000);
     $(function () {
-//        $("").scroll(function () {
-//            if($(window).scrollTop()>500){
-//                $("nav").css("top",0)
-//            }else{
-//                $("nav").css("top",-60)
-//            }
-//        })
-//        console.log($(window).scrollTop())
         $("#fullPage").fullpage({
             anchors:["p1","p2","p3","p4","p5"],
             fixedElements:"nav",
@@ -252,14 +256,16 @@
             verticalCentered: false,
             navigationColor:"#c3dfdf",
             afterLoad:function (an,index) {
-//                if(index==5){
-//                    $(".bannerjiantou").addClass("active").css("transform","rotate(180deg)");
-//                }
+                $(".banner_jieshao").animate({width:500,opacity:1},1000,"easeInQuad");
+                $(".guanyu_me").css("left",200);
+                $(".guanyu_zi h1").fadeIn(1000);
+                $(".guanyu_zi").css("right",100);
             },
             onLeave:function (index) {
-//                if(index==5){
-//                    $(".bannerjiantou").removeClass("active").css("transform","rotate(180deg)");
-//                }
+                $(".banner_jieshao").animate({width:0,opacity:0},1000,"easeInQuad");
+                $(".guanyu_me").css("left",-400);
+                $(".guanyu_zi h1").fadeOut(1000);
+                $(".guanyu_zi").css("right",-700);
             }
         });
         $(".bannerjiantou").click(function () {
@@ -268,7 +274,6 @@
             }else{
                 $.fn.fullpage.moveSectionDown();
             }
-
         })
 
 
