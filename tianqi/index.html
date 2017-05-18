@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .container{
+            width:800px;
+            height:316px;
+            margin: 10px auto;
+            border-radius: 20px;
+            background: url("img/1.jpg");
+            background-size: 108% 110%;
+            background-repeat: no-repeat;
+            background-position: center center;
+            color:#fff;
+        }
+        h1{
+            text-align: center;
+            font-size: 24px;
+            line-height: 50px;
+            color: #fff;
+        }
+        thead,table{
+            width: 800px;
+            height:50px;
+        }
+        th{
+            width: 160px;
+            height:50px;
+            float: left;
+            border: 1px solid #ccc;
+            box-sizing:border-box;
+            line-height: 50px;
+            text-align: center;
+        }
+        td{
+            width: 160px;
+            height:50px;
+            float: left;
+            border: 1px solid #ccc;
+            box-sizing:border-box;
+            line-height: 50px;
+            text-align: center;
+        }
+        #area{
+            display: none;
+        }
+        #toggle{
+            display: block;
+            height:30px;
+        }
+        .inner{
+            width:800px;
+            margin: 30px auto 0;
+            background: url("img/4.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-radius: 30px;
+        }
+        ul{
+            width: 800px;
+            height:120px;
+        }
+        ul>li{
+            width: 25%;
+            height:120px;
+            text-align: center;
+            float: left;
+            /*background: #ccc;*/
+            font-size: 14px;
+            color: #000000;
+            line-height: 100px;
+            border-top: 1px solid #ccc;
+            border-right: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        ul>li:last-child{
+            border-right:0px
+        }
+        .jy{
+            line-height: 28px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1><span class="cityname"></span>天气预报</h1>
+    <label id="toggle">
+        <input type="button" value="切换城市">
+    </label>
+    <label id="area">省：
+        <select id="province">
+            <option value="">请选择省份</option>
+        </select>
+        市：<select id="citys">
+            <option value="">请选择市区</option>
+        </select>
+    </label>
+    <table cellspacing="0">
+        <thead>
+        <tr>
+            <th>日期</th>
+            <th>天气</th>
+            <th>温度</th>
+            <th>湿度</th>
+            <th>风力</th>
+        </tr>
+        </thead>
+        <tbody>
+            <!--<tr>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+            <!--</tr>-->
+        </tbody>
+    </table>
+</div>
+
+<div class="inner">
+    <h1><span class="cityname"></span>今日安全指数</h1>
+    <ul id="air">
+        <li>空气指数</li>
+        <li class="qd"></li>
+        <li>建议</li>
+        <li class="jy"></li>
+    </ul>
+    <ul id="comf">
+        <li>空气指数</li>
+        <li class="qd"></li>
+        <li>建议</li>
+        <li class="jy"></li>
+    </ul>
+    <ul id="cw">
+        <li>洗车指数</li>
+        <li class="qd"></li>
+        <li>建议</li>
+        <li class="jy"></li>
+    </ul>
+    <ul id="drsg">
+        <li>穿衣指数</li>
+        <li class="qd"></li>
+        <li>建议</li>
+        <li class="jy"></li>
+    </ul>
+    <ul id="flu">
+        <li>流感指数</li>
+        <li class="qd"></li>
+        <li>建议</li>
+        <li class="jy"></li>
+    </ul>
+    <ul id="sport">
+        <li>运动指数</li>
+        <li class="qd"></li>
+        <li>建议</li>
+        <li class="jy"></li>
+    </ul>
+    <ul id="trav">
+        <li>出游指数</li>
+        <li class="qd"></li>
+        <li>建议</li>
+        <li class="jy"></li>
+    </ul>
+    <ul id="uv">
+        <li>防晒指数</li>
+        <li class="qd"></li>
+        <li>建议</li>
+        <li class="jy"></li>
+    </ul>
+</div>
+</body>
+<script src="jquery.js"></script>
+<script>
+$(function () {
+    function update(city) {
+        $("tbody").empty();
+        $(".cityname").html(city);
+        $.get("https://free-api.heweather.com/v5/weather",
+            {city:city,key:"fc60356b2a80437abdde7bf3362f5e39"},
+            function (r) {
+            console.log(r)
+                var n=r.HeWeather5[0].daily_forecast;
+                $.each(n,function (index,val) {
+                    $("<tr>").html(function () {
+                        return "<td>"+val.date+"</td><td>"+val.cond.txt_d+"</td><td>"+val.tmp.min+"℃"
+                            +"~"+val.tmp.max+"℃"+"</td><td>"+val.hum+"</td><td>"+val.wind.sc+"</td>"
+                    }).appendTo("tbody")
+                })
+                var m=r.HeWeather5[0].suggestion;
+                $.each(m,function (index,val) {
+                  $("#"+index).children(".qd").html(val.brf);
+                  $("#"+index).children(".jy").html(val.txt);
+
+
+                })
+            })
+    }
+    $.getScript("http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js",function () {
+        var city=remote_ip_info.city;
+        update(city);
+    })
+
+
+//    点击切换城市按钮
+    $("#toggle").click(function () {
+        $("#area").slideToggle(1000)
+    }).one("click",function () {
+//        通过 HTTP GET 请求载入 JSON 数据。
+        $.getJSON("citys.json",function (r) {
+            var province={};//声明一个对象，用来存放省份，城市
+//        遍历JSON 数据
+            $.each(r,function (index,value) {
+//                value表示json数据中的某一个对象   provinceZh表示的是属性名
+//                value.provinceZh 表示的是json数据中provinceZh的值，也就是北京，上海等省份
+                if(!province[value.provinceZh]){
+                    province[value.provinceZh]=[];
+                }
+//                province中的属性名 是 json数据中provinceZh的属性值，
+//                province的属性值 是 json数据中cityZh的属性值
+                province[value.provinceZh].push(value.cityZh);
+            });
+            $.each(province,function (index,value) {
+               $("<option>").text(index).val(index).appendTo("#province");
+            })
+//        在选择完省份失去焦点后
+            $("#province").change(function () {
+                var val=$(this).val();//获取当前选择省份的属性值（也就是当前省份的市区）
+                var citys=province[val];//
+                $("#citys").html("<option>请选择市区</option>")
+                $.each(citys,function (i,v) {
+                    $("<option>").text(v).val(v).appendTo("#citys");
+                })
+            });
+            $("#citys").change(function () {
+                if($(this).val()!=""){
+                    update($(this).val());
+                }
+            })
+
+        })
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    $.ajax({
+//        url:"",
+//        dataType:"script",
+//        success:function (r) {
+//            console.log(r)
+//        }
+//    })
+//    https://free-api.heweather.com/v5/
+//    $.get({url:"https://free-api.heweather.com/v5/weather",
+//        data:{city:"太原",key:"fc60356b2a80437abdde7bf3362f5e39"},
+//        success:function (data) {
+//        console.log(data)
+//            var n=data.HeWeather5[0].daily_forecast;
+//            $(n).each(function (index,val) {
+//                var m1=$("tbody tr td:first-child")[index];
+//                $(m1).html(val.date);
+//                var m2=$("tbody tr td:nth-child(2)")[index];
+//                $(m2).html(val.cond.txt_d);
+//                var m3=$("tbody tr td:nth-child(3)")[index];
+//                $(m3).html(val.tmp.min+"℃"+"~"+val.tmp.max+"℃");
+//                var m4=$("tbody tr td:nth-child(4)")[index];
+//                $(m4).html(val.hum);
+//                var m5=$("tbody tr td:nth-child(5)")[index];
+//                $(m5).html(val.wind.sc);
+//            })
+//        }
+//    });
+})
+</script>
+</html>

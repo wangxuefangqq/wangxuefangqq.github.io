@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        canvas{
+            display: block;
+            background: #ccb4ca;
+            margin: 0 auto;
+        }
+        .controls{
+            width:15%;
+            height:100%;
+            position: absolute;
+            top:0;
+            left:80px;
+            right:0;
+            background: linear-gradient(#b4bcdd 0%, #7eeeec 100%);
+            /*background: #c1dd8d;*/
+        }
+        .controls section{
+            width: 80%;
+            height:30px;
+            margin: 15px auto;
+            border: 1px solid #ccc;
+            /*border-radius: 10px;*/
+            background: #fff1cc;
+        }
+        section label{
+            width: 50%;
+            height:30px;
+            color: #333;
+            line-height: 30px;
+            text-align: center;
+            float: left;
+        }
+        section select{
+            width:50%;
+            height:30px;
+            float: left;
+        }
+        #color{
+            width: 48%;
+            padding:0;
+        }
+        #width,#bs,#side{
+            width: 47.5%;
+            /*height:26px;*/
+        }
+        input[type=button]{
+            display: block;
+            width: 140px;
+            height:30px;
+            margin: 15px auto;
+            border: none;
+            background: #0074dd;
+            color: #fff;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="controls">
+    <section>
+        <label for="shape">形状</label>
+        <select  id="shape">
+            <option value="rect">矩形</option>
+            <option value="line">直线</option>
+            <option value="arcin">内切圆</option>
+            <option value="arcout">外接圆</option>
+            <option value="arccenter">中心圆</option>
+            <option value="dbx">多边形</option>
+            <option value="pen">铅笔</option>
+            <option value="eraser">橡皮擦</option>
+        </select>
+    </section>
+    <section>
+        <label for="color">颜色</label>
+        <input type="color" id="color">
+    </section>
+    <section>
+        <label for="width">线宽</label>
+        <input type="number" id="width" value="2" step="2" min="2" max="20">
+    </section>
+    <section>
+        <label for="style">方式</label>
+        <select  id="style">
+            <option value="stroke">描边</option>
+            <option value="fill">填充</option>
+        </select>
+    </section>
+    <section>
+        <label for="side">边数</label>
+        <input type="number" id="side" value="3" step="1" min="3" max="20">
+    </section>
+    <input type="button" value="撤销" id="redo">
+    <input type="button" value="保存" id="save">
+    <input type="button" value="清空" id="clear">
+</div>
+<canvas width="800" height="635"></canvas>
+</body>
+<script src="css/huaban.js"></script>
+<script>
+    var canvas=document.querySelector("canvas");
+    var shape=document.querySelector("#shape");
+    var line=document.querySelector("#line");
+    var color=document.querySelector("#color");
+    var width=document.querySelector("#width");
+    var style=document.querySelector("#style");
+    var side=document.querySelector("#side");
+    var redo=document.querySelector("#redo");
+    var save=document.querySelector("#save");
+    var clear=document.querySelector("#clear");
+    var cobj=canvas.getContext("2d");
+    var s="rect";
+    shape.onchange=function () {
+        s=this.value;
+    }
+    var c="#000";
+    color.onchange=function () {
+        c=this.value;
+    }
+    var w="2";
+    width.onchange=function () {
+        w=this.value;
+    }
+    var st="stroke";
+    style.onchange=function () {
+        st=this.value;
+    }
+    var bs=3;
+    side.onchange=function () {
+        bs=this.value;
+    }
+    var data=[];
+//    鼠标按下
+    canvas.onmousedown=function (e) {
+        var ox=e.offsetX;//获取鼠标点击位置的坐标
+        var oy=e.offsetY;
+        var draw=new Draw(cobj,{color:c,width:w,style:st});
+//        如果选择的是铅笔 就开始绘图  在pen函数中接着绘制（lineTo）
+        if(s=="pen"){
+            cobj.beginPath();
+            cobj.moveTo(ox,oy);
+        }
+        canvas.onmousemove=function (e) {
+            var mx=e.offsetX;//获取鼠标移动后的坐标
+            var my=e.offsetY;
+            if(s!="eraser"){
+                cobj.clearRect(0,0,500,500);//清除画布
+                if(data.length!=0){//判断是否获取过画布的所有图像数据  若有，就将图像数据放置到画布指定的位置上
+                    cobj.putImageData(data[data.length-1],0,0);
+                }
+            }
+            draw[s](ox,oy,mx,my,bs);//绘制图
+        }
+        document.onmouseup=function () {
+            data.push(cobj.getImageData(0,0,500,500));//获取画布的所有图像数据
+            canvas.onmousemove=null;
+            document.onmouseup=null;
+        }
+    }
+//    撤销
+    redo.onclick=function () {
+        if(data.length==0){
+            alert("不能撤销了");
+            return;
+        }
+        cobj.clearRect(0,0,500,500);
+        data.pop();
+        if(data.length==0){
+            return;
+        }
+        cobj.putImageData(data[data.length-1],0,0);
+    }
+//    保存
+    save.onclick=function(){
+        var r=canvas.toDataURL();
+        location.assign(r);
+    }
+//    清除
+    clear.onclick=function () {
+//        只是清除了当前画布当中的内容  历史中还有  再点击撤销是可以出现
+        cobj.clearRect(0,0,500,500);
+//        再加上data=[] 则就彻底清空了
+        data=[];
+    }
+</script>
+</html>

@@ -1,0 +1,716 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .scene, .yxjm {
+            width: 100%;
+            height: 100%;
+            margin: 0 auto;
+            background-image: url("img/bg.png");
+            background-repeat: no-repeat;
+            position: relative;
+        }
+
+        .ksjm {
+            height: 400px;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            text-align: center;
+        }
+
+        .ks_btn {
+            height: 150px;
+        }
+
+        .ks_btn > img {
+            margin: 50px 20px;
+        }
+
+        .yxjm {
+            display: none;
+            z-index: 1000;
+            background-image: url("img/bg.png");
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+
+        .yxjm_top {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width: 1000px;
+            height: 65px;
+            z-index: 1005;
+            display: none;
+        }
+
+        .scor, .state {
+            width: 195px;
+            float: left;
+            height: 65px;
+            background-image: url("img/scor.png");
+            background-size: 100% 94%;
+            text-align: center;
+            color: #fff;
+            font-size: 30px;
+            line-height: 77px;
+        }
+
+        .life {
+            width: 239px;
+            float: left;
+            margin-left: 30px;
+            height: 65px;
+            background-image: url("img/life.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 102% 90%;
+            overflow: hidden;
+            position: relative;
+            text-align: center;
+            color: #fff;
+            font-size: 30px;
+            margin-right: 30px;
+        }
+
+        .lifezhi {
+            position: absolute;
+            bottom: 10px;
+            left: 63px;
+            width: 165px;
+            height: 38px;
+            z-index: -1;
+            background: #9e773c;
+        }
+
+        .pause {
+            width: 65px;
+            height: 65px;
+            margin-top: 15px;
+            background-image: url("img/stop.png");
+            background-repeat: no-repeat;
+            background-size: 82%;
+            float: right;
+        }
+
+        .letter {
+            width: 80px;
+            height: 80px;
+            position: absolute;
+            background-size: 100% 100%;
+        }
+
+        .ztk {
+            width: 470px;
+            height: 220px;
+            background-image: url("img/stopbox.png");
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+            display: none;
+            z-index: 2000;
+        }
+
+        .ztk_left {
+            width: 93px;
+            height: 93px;
+            float: left;
+            background-image: url("img/continue.png");
+            margin-top: 90px;
+            margin-left: 30px;
+        }
+
+        .ztk_center {
+            width: 93px;
+            height: 93px;
+            float: left;
+            background-image: url("img/restart.png");
+            margin-top: 90px;
+            margin-left: 68px;
+        }
+        .ztk_center:hover{
+            transition: all 1s;
+            transform: rotate(360deg);
+        }
+        .over_btn_res:hover{
+             transition: all 1s;
+             transform: rotate(360deg);
+         }
+        .ztk_right {
+            width: 93px;
+            height: 93px;
+            float: right;
+            background-image: url("img/back.png");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            margin-top: 90px;
+            margin-right: 30px;
+        }
+        .ztk_right:hover{
+            transition: all 1s;
+            transform: translateX(-10px);
+        }
+        .over_btn_back:hover{
+             transition: all 1s;
+             transform: translateX(-10px);
+         }
+        .over {
+            width: 484px;
+            height: 419px;
+            background-image: url("img/over.png");
+            background-position: center center;
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+            z-index: 5000;
+            display: none;
+        }
+
+        .over_btn {
+            width: 250px;
+            height: 93px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 50px;
+            margin: auto;
+        }
+
+        .over_btn_res {
+            width: 93px;
+            height: 93px;
+            float: left;
+            background-image: url("img/restart.png");
+            background-size: cover;
+        }
+
+        .over_btn_back {
+            width: 93px;
+            height: 93px;
+            float: right;
+            background-image: url("img/back.png");
+            background-size: cover;
+        }
+
+        .fenshu {
+            width: 100px;
+            height: 40px;
+            position: absolute;
+            top: 150px;
+            left: 250px;
+            text-align: center;
+            color: #fff;
+            font-size: 26px;
+            line-height: 35px;
+            text-shadow: 1px 1px 5px #888;
+        }
+
+        .bestfenshu {
+            top: 200px;
+        }
+
+        .guanka {
+            width: 840px;
+            height: 402px;
+            background-image: url("img/difficult.png");
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            display: none;
+        }
+
+        .choosebox {
+            width: 214px;
+            height: 93px;
+            cursor: pointer;
+            transition: all 1s;
+            border: 2px solid transparent;
+        }
+
+        .choosebox:hover {
+            transform: scale(1.2, 1.2);
+        }
+
+        .jd {
+            background-image: url("img/easy.png");
+            background-repeat: no-repeat;
+            background-position: center center;
+            float: left;
+            margin-top: 200px;
+            margin-left: 60px;
+        }
+
+        .yb {
+            background-image: url("img/medium.png");
+            background-repeat: no-repeat;
+            background-position: center center;
+            float: left;
+            margin-top: 200px;
+            margin-left: 45px;
+        }
+
+        .kn {
+            background-image: url("img/hard.png");
+            background-repeat: no-repeat;
+            background-position: center center;
+            float: right;
+            margin-top: 200px;
+            margin-right: 50px;
+        }
+
+        .gk_back {
+            width: 110px;
+            height: 110px;
+            background-image: url("img/quit.png");
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+
+        .paihangb {
+            position: absolute;
+            top: 12px;
+            left: 1000px;
+            width: 65px;
+            height: 65px;
+            background-image: url("img/1.png");
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: 102%;
+            cursor: pointer;
+            display: none;
+            z-index: 10000;
+            margin-left: 20px;
+        }
+
+        table {
+            width: 500px;
+            height: 350px;
+            /*background: #9e5012;*/
+            position: fixed;
+            top: 0;bottom:0;
+            left: 0;right:0;
+            margin: auto;
+            display: none;
+            background-image: url("img/2.png");
+            background-repeat: no-repeat;
+            background-position: -44px -22px;
+            background-size: 121% 112%;
+            /*border-collapse: collapse;*/
+            /*border: 1px solid #ccc;*/
+            z-index: 10000;
+            /*box-sizing: border-box;*/
+            /*table-layout: fixed;*/
+        }
+        thead{
+            position: absolute;
+            top:90px;
+        }
+        tbody{
+            position: absolute;
+            top:140px;
+        }
+        th, td {
+            width: 160px;
+            height: 50px;
+            color: #433;
+            font-size: 20px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+<div class="scene">
+    <div class="ksjm">
+        <img src="img/logo.png" alt="">
+        <div class="ks_btn">
+            <img src="img/choose.png" alt="" class="xgbtn">
+            <img src="img/start.png" alt="" class="ksbtn">
+        </div>
+    </div>
+    <div class="yxjm_top">
+        <div class="scor">0</div>
+        <div class="life">
+            <div class="lifezhi">5</div>
+        </div>
+        <div class="state">1</div>
+        <div class="paihangb">
+
+        </div>
+        <div class="pause">
+        </div>
+    </div>
+
+    <div class="yxjm"></div>
+    <div class="ztk">
+        <div class="ztk_left"></div>
+        <div class="ztk_center"></div>
+        <div class="ztk_right"></div>
+    </div>
+    <div class="over">
+        <div class="fenshu">0</div>
+        <div class="fenshu bestfenshu">0</div>
+        <div class="over_btn">
+            <div class="over_btn_res"></div>
+            <div class="over_btn_back"></div>
+        </div>
+    </div>
+    <div class="guanka">
+        <div class="choosebox jd"></div>
+        <div class="choosebox yb"></div>
+        <div class="choosebox kn"></div>
+        <div class="gk_back"></div>
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th>名次</th>
+            <th>昵称</th>
+            <th>成绩</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</div>
+</body>
+<script>
+    class Game {
+        constructor(main, scor, over, ksjm, top, fenshu, best, state, num, tbody) {
+            this.main = main;
+            this.ksjm = ksjm;
+            this.top = top;
+            this.fenshu = fenshu;
+            this.best = best;
+            this.tbody = tbody;
+            this.num = num;
+            this.obj = {};
+            this.scor = scor;
+            this.scors = 0;
+            this.state = state;
+            this.guanka = 1;
+            this.speed = 5;
+            this.life = life;
+            this.smz = 5;
+            this.height = window.innerHeight;
+            this.st = null;
+            this.startcontrol = true;
+            this.phb_flag = true;
+            this.over = over;
+        }
+
+        createletter() {
+            var div = document.createElement("div");
+            div.className = "letter";
+            do {
+                var rn = Math.floor(Math.random() * 26 + 65);
+                var le = String.fromCharCode(rn);
+            } while (this.obj[le]);
+            div.style.backgroundImage = `url(imgs/${le}.png)`;
+            do {
+                var rl = Math.random() * 1200;
+            } while (this.check((rl)));
+            var rt = -Math.random() * 100;
+            div.style.left = rl + "px";
+            div.style.top = rt + "px";
+            this.obj[le] = {left: rl, top: rt, el: div};
+            this.main.appendChild(div);
+        }
+
+        play() {
+            for (var i = 0; i < this.num; i++) {
+                this.createletter();
+            }
+            this.move();
+            this.keydown();
+            this.bestfenshu = localStorage.bestfenshu ? JSON.parse(localStorage.bestfenshu) : [];
+            this.startcontrol = false;
+            this.phb_flag = true;
+            this.phb();
+        }
+
+        check(left) {
+            for (var i in this.obj) {
+                if (this.obj[i].left - 80 < left && this.obj[i].left + 80 > left) {
+                    return true;
+                }
+            }
+        }
+
+        move() {
+            this.st = setInterval(function () {
+                for (var i in this.obj) {
+                    var t = this.obj[i].top;
+                    t += this.speed;
+                    this.obj[i].top = t;
+                    this.obj[i].el.style.top = t + "px"
+                    if (t > this.height) {
+                        this.smz--;
+                        this.life.innerHTML = this.smz;
+                        this.main.removeChild(this.obj[i].el);
+                        delete this.obj[i];
+                        this.createletter();
+                        if (this.smz == 0) {
+                            this.gameover();
+                            return;
+                        }
+                    }
+                }
+            }.bind(this), 50)
+        }
+
+        keydown() {
+//            键盘事件 按下键 使得当前main中存在的字母小时
+            document.onkeydown = function (e) {
+                var keycode = e.keyCode;
+                var l = String.fromCharCode(keycode);
+                if (this.obj[l]) {
+                    this.main.removeChild(this.obj[l].el);
+                    delete this.obj[l];
+                    this.scors++;
+                    this.scor.innerHTML = this.scors;
+                    if (this.scors % 10 == 0) {
+                        this.upstate();
+                    }
+                    this.createletter();
+                }
+            }.bind(this);
+        }
+
+        upstate() {
+            this.guanka++;
+            this.state.innerHTML = this.guanka;
+            if (this.guanka <= 4) {
+                this.createletter();
+            } else {
+                this.speed++;
+            }
+        }
+
+        gameover() {
+            this.main.innerHTML = "";
+            this.fenshu.innerHTML = this.scors;
+//            this.best.innerHTML = this.bestfenshu[0].fenshu;
+            if (this.bestfenshu.length < 3 || this.bestfenshu.length >= 3 && this.scors > this.bestfenshu[2].fenshu) {
+                var player = prompt("请输入名字");
+                this.bestfenshu.push({player, fenshu: this.scors});
+                this.bestfenshu.sort(function (a, b) {
+                    if (a.fenshu > b.fenshu) {
+                        return -1;
+                    } else {
+                        return 1;
+                    }
+                })
+                if (this.bestfenshu.length > 3) {
+                    this.bestfenshu.pop();
+                }
+                localStorage.bestfenshu = JSON.stringify(this.bestfenshu);
+                this.fenshu.innerHTML = this.scors;
+                this.best.innerHTML = this.bestfenshu[0].fenshu;
+            }
+            this.over.style.display = "block";
+            this.obj = {};
+            this.speed = 5;
+            this.scors = 0;
+            this.scor.innerHTML = 0;
+            this.life.innerHTML = 5;
+            this.smz = 5;
+            this.guanka = 1;
+            this.state.innerHTML = 1;
+            this.startcontrol = true;
+            clearInterval(this.st);
+            document.onkeydown = null;
+        }
+
+        pause() {
+            clearInterval(this.st);
+            document.onkeydown = null;
+        }
+
+        kaishi() {
+            this.move();
+            this.keydown();
+        }
+
+        back() {
+            this.main.innerHTML = "";
+            this.obj = {};
+            this.speed = 5;
+            this.scors = 0;
+            this.scor.innerHTML = 0;
+            this.life.innerHTML = 5;
+            this.smz = 5;
+            this.guanka = 1;
+            this.state.innerHTML = 1;
+            this.startcontrol = true;
+            clearInterval(this.st);
+            document.onkeydown = null;
+            this.over.style.display = "none";
+            this.main.style.display = "none";
+            this.ksjm.style.display = "block";
+            this.top.style.display = "none";
+        }
+
+        restart() {
+            this.main.innerHTML = "";
+            this.obj = {};
+            this.speed = 5;
+            this.scors = 0;
+            this.scor.innerHTML = 0;
+            this.life.innerHTML = 5;
+            this.smz = 5;
+            this.guanka = 1;
+            this.state.innerHTML = 1;
+            this.startcontrol = true;
+            clearInterval(this.st);
+        }
+
+        phb() {
+            if (!phb_flag) {
+                var data = localStorage.bestfenshu ? JSON.parse(localStorage.bestfenshu) : [];
+                data.forEach(function (v, i) {
+                    var tr = document.createElement("tr");
+                    tr.innerHTML = `<td>${i + 1}</td><td>${data[i].player}</td><td>${data[i].fenshu}</td>`;
+                    tbody.appendChild(tr);
+                })
+            }
+        }
+    }
+    var ksjm = document.querySelector(".ksjm")
+    var yxjm = document.querySelector(".yxjm");
+    var number = 3;
+    var scor = document.querySelector(".scor");
+    var life = document.querySelector(".lifezhi");
+    var pause = document.querySelector(".pause");
+    var start = document.querySelector(".ks_btn .ksbtn");
+    var xgbtn = document.querySelector(".xgbtn");
+    var ztk = document.querySelector(".ztk");
+    var ztkl = document.querySelector(".ztk_left");
+    var ztkc = document.querySelector(".ztk_center");
+    var ztkr = document.querySelector(".ztk_right");
+    var over = document.querySelector(".over");
+    var restart = document.querySelector(".over_btn_res");
+    var back = document.querySelector(".over_btn_back");
+    var top1 = document.querySelector(".yxjm_top");
+    var fenshu = document.querySelector(".fenshu");
+    var bestfenshu = document.querySelector(".bestfenshu");
+    var state = document.querySelector(".state");
+    var gk_back = document.querySelector(".gk_back");
+    var guanka = document.querySelector(".guanka");
+    var choosebox = document.querySelectorAll(".choosebox");
+    var paihangbang = document.querySelector(".paihangb");
+    var table = document.querySelector("table");
+    var tbody = document.querySelector("tbody");
+    var startcontrol = true;
+    var obj;
+    var st;
+    var num;
+
+    start.onclick = function () {
+        if (startcontrol) {
+            obj = new Game(yxjm, scor, over, ksjm, top1, fenshu, bestfenshu, state, num, tbody);
+            yxjm.style.display = "block";
+            top1.style.display = "block";
+            ksjm.style.display = "none";
+            paihangbang.style.display = "block";
+            obj.play();
+        }
+    }
+    var ztflag = true;
+    pause.onclick = function () {
+        ztk.style.display = "block";
+        obj.pause();
+    }
+    ztkl.onclick = function () {
+        ztk.style.display = "none";
+        obj.kaishi();
+    }
+    ztkc.onclick = function () {
+        ztk.style.display = "none";
+        obj.restart();
+        obj.play();
+    }
+    ztkr.onclick = function () {
+        ztk.style.display = "none";
+        obj.back();
+    }
+    back.onclick = function () {
+        over.style.display = "none";
+        obj.back();
+    }
+    restart.onclick = function () {
+        over.style.display = "none";
+        obj.restart();
+        obj.play();
+    }
+    var phb_flag = true;
+    paihangbang.onclick = function (e) {
+        if (phb_flag) {
+            phb_flag = false;
+            e.stopPropagation();
+            table.style.display = "block";
+            obj.phb();
+            over.style.display = "none";
+        }
+    }
+    window.onclick = function () {
+        tbody.innerHTML = "";
+        table.style.display = "none";
+        phb_flag = true;
+    }
+    num = 1;
+    choosebox.forEach(function (box, index) {
+        box.onclick = function () {
+            for (let i = 0; i < choosebox.length; i++) {
+                choosebox[i].style.border = "2px solid transparent";
+            }
+            box.style.border = "2px solid red";
+            num = 1 + index + index;
+        }
+    })
+    xgbtn.onclick = function () {
+        ksjm.style.display = "none";
+        guanka.style.display = "block";
+    }
+    gk_back.onclick = function () {
+        ksjm.style.display = "block";
+        guanka.style.display = "none";
+    }
+
+</script>
+</html>

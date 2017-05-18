@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>记事本</title>
+    <style>
+       *{
+            margin: 0;
+            padding:0;
+            list-style: none;
+        }
+        body{
+            display: flex;
+            flex-direction: column;
+        }
+        .title{
+            width: 100%;
+            height: 200px;
+            background: #00a5c3;
+            line-height: 100px;
+            font-size: 20px;
+            font-weight: bold;
+            padding-left: 30px;
+            box-sizing:border-box;
+        }
+        .inputarea{
+            width:100%;
+            height:50px;
+        }
+        #text{
+            width:300px;
+            height:50px;
+            float: left;
+        }
+        #submit{
+            width:150px;
+            height:50px;
+            background: #eedd82;
+            float: left;
+            cursor: pointer;
+
+        }
+        .show{
+            width: 100%;
+            background: #ccc;
+            flex-grow: 1;
+        /*//扩张*/
+        }
+        .plan{
+            width:50%;height: 100%;
+            overflow: auto;background: #2ecc71;
+            float: left;
+        }
+        .done{
+            width:50%;height: 100%;
+            overflow: auto;background: #4e21cc;
+            float: right;
+        }
+       ul li{
+           width:100%;
+           height:30px;
+       }
+        ul li input{
+            float: left;
+            width:30px;
+            height:30px;
+        }
+        ul li span{
+            float: left;
+            width: 300px;
+            height:auto;
+            line-height:30px;
+            color:#fff;
+            padding-left: 30px;
+            box-sizing:border-box;
+        }
+       ul li time{
+           float: right;width: 150px;
+           height:30px;
+           background: #f33;
+           line-height:30px;
+           color:#fff;
+           text-align: center;
+       }
+        .contenttitle,.titleleft{
+            width:50%;
+            height:30px;
+            float: left;
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+            color: red;
+            line-height: 30px;
+        }
+    </style>
+</head><body>
+<div class="title">TODO LIST</div>
+<div class="inputarea">
+    <input type="text" id="text">
+    <input type="button" id="submit" value="提交">
+</div>
+<div class="show">
+    <div class="titleleft">未完成</div>
+    <div class="contenttitle">已完成</div>
+    <ul class="plan">
+    </ul>
+    <ul class="done">
+    </ul>
+</div>
+</body>
+<script>
+    var text=document.querySelector("#text");
+    var submit=document.querySelector("#submit");
+    var plan=document.querySelector(".plan");
+    var done=document.querySelector(".done");
+//    获取本地存储的数据
+    function getData() {
+//        判断如果本地有存储的数据  就返回存储的数据  若没有就返回空数组   JSON.parse 把字符串转为json格式
+        return localStorage.todo?JSON.parse(localStorage.todo):[];
+    }
+//    保存新设置的数据
+    function saveData(data) {
+//         JSON.stringify()  把json格式转为字符串
+        localStorage.todo=JSON.stringify(data);
+    }
+//    重写数据
+    function reWhite(){
+//        获取本地存储的数据  本地没有数据时，data是空数组
+        var data=getData();
+        var str1="",str2="";
+//        遍历数据
+        data.forEach(function (v,i) {
+            if(!v.done){
+
+                str1+=`<li id=${i}><input type="checkbox" onfocus="changeState(this)"><span contenteditable="true" onblur="changeContent(this)">${v.content}</span><time>${time(v.time)}</time></li>`;
+            }else{
+                str2+=`<li id=${i}><input type="checkbox" onfocus="del(this)"><span>${v.content}</span><time>${time(v.time)}</time></li>`;
+            }
+//            在网页写内容
+            plan.innerHTML=str1;
+            done.innerHTML=str2;
+        })
+    }
+//    在刷新网页后可以执行 并显示出本地存储的数据
+    reWhite();
+//    点击提交
+    submit.onclick=function () {
+//   没有输入的内容  就不执行
+        if(text.value==""){
+            return;
+        }
+//        输入内容 需要将内容保存起来 赋值给变量val
+        var val=text.value;
+//        清空内容
+        text.value="";
+//        获取数据
+        var data=getData();
+//        获取本地时间
+        var date=new Date();
+//        转换为毫秒数
+        var time=date.getTime();
+//        给数组进行添加
+        data.push({content:val,time,done:false});
+        saveData(data);
+        reWhite();
+    }
+    function time(t) {
+        var date=new Date();
+        date.setTime(t);
+        var Y=setZero(date.getFullYear());
+        var M=setZero(date.getMonth());
+        var D=setZero(date.getDate());
+        var H=setZero(date.getHours());
+        var F=setZero(date.getMinutes());
+        return  Y+"/"+M+"/"+D+" "+H+":"+F;
+    }
+    function setZero(num) {
+        if(num<10){
+            return "0"+num;
+        }else{
+            return num;
+        }
+    }
+    function changeState(ele){
+        var id=ele.parentNode.id;
+        var data=getData();
+        data[id].done=true;
+        saveData(data);
+        reWhite();
+    }
+    function del(ele){
+        var id=ele.parentNode.id;
+        var data=getData();
+        data.splice(id,1);
+        saveData(data);
+        reWhite();
+    }
+    function changeContent(ele){
+        var id=ele.parentNode.id;
+        var val=ele.innerHTML;
+        var data=getData();
+        data[id].content=val;
+        saveData(data);
+        reWhite();
+    }
+</script>
+</html>

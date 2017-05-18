@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .scene{
+            width: 500px;
+            height:500px;
+            border-top: 1px solid #ccc;
+            border-left: 1px solid #ccc;
+            margin: 0 auto;
+        }
+        .block{
+            width: 49px;
+            height:49px;
+            background: #aaa;
+            float: left;
+            border-right:1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            /*background-image: url("img/3.png");*/
+            /*background-repeat: no-repeat;*/
+            /*background-size: 100% 100%;*/
+            /*background-position: center center;*/
+        }
+        .control{
+            width: 200px;
+            height:500px;
+            position: fixed;
+            top:0;
+            left:50%;margin-left: -460px;
+            background: #80cbff;
+            color:#fff;
+            font-size: 16px;
+            /*display: none;*/
+        }
+        .show{
+            background-image: url("img/lei.png");
+            background-repeat: no-repeat;
+            background-size: 80% 80%;
+            background-position: center center;
+        }
+        .num{
+            background: #fff;
+            text-align: center;
+            line-height: 48px;
+        }
+
+        .flag{
+            background-image: url("img/5.jpg");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            background-position: center center;
+        }
+        .flagnum,time{
+            width: 140px;
+            height: 30px;
+            font-size: 20px;
+            line-height: 30px;
+            background: #e31aff;
+            margin: 40px auto;
+            text-align: center;
+        }
+        time{
+            display: block;
+        }
+        .start,.hard,.phb,.back{
+            width:140px;
+            height:30px;
+            border-radius: 30px;
+            line-height: 30px;
+            text-align: center;
+            background: #e31aff;
+            margin: 40px auto;
+            cursor: pointer;
+        }
+        .gamestart{
+            width: 500px;
+            height:500px;
+            background: #ccc;
+            position: fixed;
+            top:0;
+            left:0;
+            right:0;
+            margin: auto;
+            z-index:100;
+            background: url("img/1.jpg");
+            background-repeat: no-repeat;
+        }
+        .gamestart_left{
+            width:200px;
+            height:200px;
+            position: absolute;
+            left:15px;
+            bottom: 100px;
+            background: url("img/6.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .gamestart_right{
+            width:200px;
+            height:200px;
+            position: absolute;
+            right:-15px;
+            bottom: 100px;
+            background: url("img/7.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .gamestart>p{
+            display: block;
+            font-size: 50px;
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+            padding-top: 50px;
+            font-family:方正剪纸简体;
+        }
+        .startbtn{
+            position: absolute;
+            bottom: 100px;
+            left:0;
+            right:0;
+            margin: auto;
+            color: #fff;
+            font-family:方正剪纸简体;
+            border-radius: 30px;
+            width: 160px;
+            height:50px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 20px;
+            background: #795d5d;
+            cursor: pointer;
+        }
+        .guanka{
+            width: 200px;
+            height:240px;
+            position: fixed;
+            top:0;bottom: 0;
+            left:0;
+            right:0;margin: auto;
+            background: #00fcff;
+            z-index: 1000;
+        }
+        .phbli{
+            width:390px;
+            height:180px;
+            background: #00fcff;
+            position: fixed;
+            top:0;bottom: 0;
+            left:0;
+            right:0;margin: auto;
+            z-index:1000;
+        }
+        .phblis{
+            width:390px;
+            height:135px;
+        }
+        .phbli>h1{
+            line-height: 48px;
+            text-align: center;
+            font-size:20px;
+        }
+        span{
+            display: block;
+            width: 128px;
+            height: 43px;
+            border: 1px solid #ccc;
+            float: left;
+            text-align: center;
+            line-height:48px ;
+        }
+        .btn{
+            width: 100px;
+            height:30px;
+            border-radius: 20px;
+            line-height: 30px;
+            text-align: center;
+            background: #dd524d;
+            margin: 40px auto;
+            cursor: pointer;
+        }
+        .gameover,.success{
+            width: 500px;
+            height: 500px;
+            background: #727272;
+            position: fixed;
+            top:0;
+            left:0;
+            right:0;
+            margin: auto;
+            text-align: center;
+        }
+        .gameover>b{
+            font-size: 40px;
+            color: #fff;
+            font-family:方正剪纸简体;
+            text-align: center;
+            line-height: 300px;
+        }
+        .success>b{
+            font-size: 40px;
+            color: #fff;
+            font-family:方正剪纸简体;
+            text-align: center;
+            line-height: 200px;
+        }
+        .gameover_tu{
+            position:absolute;
+            bottom: 80px;
+            left:0;
+            right:0;
+            margin: auto;
+            width: 180px;
+            height:180px;
+            background: url("img/12.png");
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size:cover;
+        }
+        .success_tu{
+            position:absolute;
+            bottom: 150px;
+            left:0;
+            right:0;
+            margin: auto;
+            width: 180px;
+            height:180px;
+            background: url("img/13.png");
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size:cover;
+        }
+        .restart{
+            position:absolute;
+            bottom: 80px;
+            left:0;
+            right:0;
+            margin: auto;
+            width: 160px;
+            height:30px;
+            border-radius: 30px;
+            background: #404a3e;
+            line-height: 30px;
+            font-size: 20px;
+            color: #fff;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="scene"></div>
+    <div class="control">
+        <time>时间：0</time>
+        <div class="flagnum">flag:10</div>
+        <div class="start">重新开始</div>
+        <div class="hard">难度选择</div>
+        <div class="phb">排行榜</div>
+        <div class="back">返回游戏</div>
+    </div>
+</div>
+<div class="gamestart">
+    <p>扫雷小游戏</p>
+    <div class="gamestart_left"></div>
+    <div class="gamestart_right"></div>
+    <div class="startbtn">开始游戏</div>
+</div>
+<div class="guanka">
+    <div class="btn easy">简单</div>
+    <div class="btn medium">一般</div>
+    <div class="btn difficult">困难</div>
+</div>
+<div class="phbli">
+    <h1>排行榜</h1>
+    <div class="phblis"></div>
+</div>
+<div class="gameover">
+    <b>GAME OVER!</b>
+    <div class="gameover_tu"></div>
+</div>
+<div class="success">
+    <b>SUCCESS!</b>
+    <div class="success_tu"></div>
+    <div class="restart">再来一次</div>
+</div>
+</body>
+<script src="jquery.js"></script>
+<script>
+
+    $(".control").slideUp(0);
+    $(".guanka").slideUp(0);
+    $(".phbli").hide();
+    $(".gameover").hide();
+    $(".success").hide();
+//    <!--页面加载-->
+    $(document).ready(function () {
+        var num=10;
+        var t;
+        var n=10;
+//        点击开始游戏
+        $(".startbtn").click(function () {
+            $(".gamestart").slideUp(1000);
+            $(".control").slideDown(2000);
+            t=setInterval(timemove,1000);
+            creatLei();
+        })
+//        点击重新开始
+        $(".start").click(function () {
+            gameover();
+            t=setInterval(timemove,1000);
+            creatLei();
+        })
+
+        $(".restart").click(function () {
+            gameover();
+            t=setInterval(timemove,1000);
+            creatLei();
+        })
+//        点击难度选择
+        $(".hard").click(function () {
+           $(".guanka").slideToggle(500);
+        });
+//         点击简单
+        $(".easy").click(function () {
+            num=10;
+            n=10;
+            $(".guanka").slideToggle(500);
+        })
+//        点击一般
+        $(".medium").click(function () {
+            num=15;
+            n=15;
+            $(".guanka").slideToggle(500);
+        })
+//        困难
+        $(".difficult").click(function () {
+            num=20;
+            n=20;
+            $(".guanka").slideToggle(500);
+        })
+//        排行榜
+        $(".phb").click(function (e) {
+                $(".phbli").slideToggle(500);
+                reWrite();
+        })
+//        返回游戏
+        $(".back").click(function () {
+            gameover();
+            $(".control").slideToggle(0);
+            $(".gamestart").slideToggle(0);
+        })
+//        获取本地信息
+        var bestscor=localStorage.bestscor?JSON.parse(localStorage.bestscor):[];
+//        重写本地信息 将本地信息添加到排行榜中
+        function reWrite() {
+            $(".phblis").html("");
+            $(bestscor).each(function (index,ele) {
+                $(".phblis").append("<span>名次："+(index+1)+"</span>" +"<span>昵称："+(ele.player)+"</span>"+"<span>成绩："+(ele.scor)
+                    +"</span>")
+            })
+        }
+        var times=0;
+//        时间增加函数
+        function timemove() {
+            $("time").html("时间:"+times);
+            times++;
+        }
+//        创建雷
+        function creatLei() {
+            do {
+                console.log(1)
+                $(".scene").empty();
+//        行
+                for (var i = 0; i < 10; i++) {
+//            列
+                    for (var j = 0; j < 10; j++) {
+//                产生的雷的随机概率
+                        var islei = Math.random() > 0.9;
+//                创建每个单元格
+                        $("<div>")
+                            .addClass(function () {//每个单元格添加类名
+                                if (islei) {//判断如果有雷  就加类名lei
+                                    return "block lei"
+                                } else {
+                                    return "block";
+                                }
+                            })
+                            .attr("id", i + "-" + j)//
+                            .data("pos", {x: i, y: j})
+                            .mousedown(mousedownEvent)
+                            .appendTo(".scene")
+                    }
+                }
+            }while($(".lei").length!=num);
+        }
+//        鼠标按下事件
+        function mousedownEvent(e) {
+//            判断按下的是左键还是右键
+            if(e.which==1){
+                leftclick.call(this);
+            }else{
+                rightclick.call(this);
+            }
+        }
+//        点击的是左键
+        function leftclick() {
+//            如果点击的小块有旗子就直接返回
+            if($(this).hasClass("flag")){
+                return;
+            }
+//            如果点击的小块有lei这个类名，就给有lei的小块添加雷，并弹出失败
+            if($(this).hasClass("lei")){
+                $(".lei").addClass("show");
+                clearInterval(t);
+                $(".gameover").fadeToggle(2000);
+                return;
+            }else{
+//                点击的小块如果没有雷，就给他添加数字
+                $(this).addClass("num");
+//                这里的data就是创建雷存储的每一个小块的位置
+                var pos=$(this).data("pos");
+                var n=0;//没有雷时表格中显示的数字
+//                循环当前点击的小块周围的8个格
+                for(var i=pos.x-1;i<=pos.x+1;i++){
+                    for(var j=pos.y-1;j<=pos.y+1;j++){
+//                        如果周围的有一些小格有lei这个类名 ，就给n++，有几个加几
+                        if($("#"+i+"-"+j).hasClass("lei")){
+                            n++;
+                        }
+                    }
+                }
+                $(this).html(n);//将n显示在网页中
+//                如果n=0，说明周围的几个都没有雷，再找到符合if条件的格，并执行leftclick函数
+                if(n==0){
+//                    再次遍历周围的格
+                    for(var i=pos.x-1;i<=pos.x+1;i++){
+                        for(var j=pos.y-1;j<=pos.y+1;j++){
+                            var obj=$("#"+i+"-"+j);
+//                            条件是只有一个格，并且这个格
+                            if(obj.length==1&&!obj.hasClass("num")){
+                                leftclick.call(obj[0]);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        function rightclick() {
+            if($(this).hasClass("num")){
+                return;
+            }
+            if($(this).hasClass("flag")){
+                $(this).removeClass("flag");
+                num++;
+            }else{
+                num--;
+                if(num<0){
+                    num++;
+                    clearInterval(t);
+                    $(".gameover").fadeToggle(2000);
+                    return;
+                }
+                $(this).addClass("flag");
+                if(num==0){
+                    console.log(this)
+                    if($(".flag").filter(".lei").length==10){
+                        clearInterval(t);
+                        if(bestscor.length<3||(bestscor.length>=3&&times<bestscor[2].scor)){
+                            var player=prompt("请输入大名");
+                            bestscor.push({player,scor:times});
+                            bestscor.sort(function (a,b) {
+                                if(a.scor<b.scor){
+                                    return -1;
+                                }else{
+                                    return 1;
+                                }
+                            })
+                            if(bestscor.length>3){
+                                bestscor.pop();
+                            }
+                            localStorage.bestscor=JSON.stringify(bestscor)
+                        }
+                        $(".success").fadeToggle(1000);
+                    }
+                }
+            }
+            $(".flagnum").html("flag:"+num);
+        }
+//        游戏结束
+        function gameover() {
+            $(".scene div").unbind("mousedown");
+            clearInterval(t);
+            $(".scene").empty();
+            times=0;
+            num=n;
+            $(".flagnum").html("flag:"+num);
+            $("time").html("时间:"+0);
+            $(".gameover").hide();
+            $(".success").hide();
+//            $(".flagnum").html("flag:"+num);
+        }
+//        阻止浏览器默认的鼠标右击事件
+        $(document).on("contextmenu",function (e) {
+            e.preventDefault();
+        })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    })
+</script>
+</html>
