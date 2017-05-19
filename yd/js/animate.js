@@ -356,6 +356,10 @@
 	 case "right":
 	 case "padding":
 	 case "margin":
+   case "marginTop":
+   case "marginBottom":
+   case "marginRight":
+   case "marginLeft":
 	 case "paddingLeft":
    case "paddingRight":
    //ÐÞ¸Ä£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡

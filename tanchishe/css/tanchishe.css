@@ -21,8 +21,7 @@ html body{
 .gezi{
 	width: 30px;
 	height: 30px;
-	/*background: #fff;*/
-	background: green;
+	/*background: green;*/
 	border-right: 1px solid #000;
 	border-bottom: 1px solid #000;
 	box-sizing:border-box;
@@ -32,14 +31,16 @@ html body{
 	border-right: 0;
 }
 .gezi:nth-child(380)~.gezi{
-
 	border-bottom: 0;
 }
 .she{
 	background: red;
 }
 .food{
-	background: orange;
+	background-image:url("../img/6.png");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 .kaishi{
 	width: 600px;
@@ -62,7 +63,7 @@ html body{
 .new{
 	width: 100px;
 	height: 40px;
-	background: blue; 
+	background: #18e91d;
 	border-radius: 20px;
 	font-size: 20px;
 	color: #fff;
@@ -91,15 +92,18 @@ html body{
 	left:0;
 	right:0;
 	margin: auto;
-	background: green;
+	background-color: green;
 	z-index: 100;
 	text-align: center;
 	cursor: pointer;
 	display: none;
+	/*background-image: url("../img/11.png");*/
+	background-position: center center;
+	background-repeat: no-repeat;
 }
 .over>span{
-	font-size: 30px;
-	color: #000;
+	font-size: 46px;
+	color: #fff;
 	line-height: 300px;
 }
 .rep{
@@ -113,9 +117,9 @@ html body{
 	margin-top: 80px;
 
 }
-.zuigaofen span{
+.zuigaofen,.defen{
 	color: #fff;
-	font-size: 20px;
+	font-size: 36px;
 }
 .superfood{
 	background: blue;

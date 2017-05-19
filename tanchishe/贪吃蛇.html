@@ -17,7 +17,7 @@
 		<div class="defen">得分：<span>00</span></div>
 	</div>
 	<div class="control">
-		<div class="phb">最高分：0</div>
+		<!--<div class="phb">最高分：0</div>-->
 		<div class="scor">得分：0</div>
 		<div class="zant">暂停</div>
 		<div class="restart">重新开始</div>
@@ -94,18 +94,18 @@
             this.st;
         }
 		play(){
-            this.bestscor.innerHTML="最高分："+localStorage.zgf;
+//            this.bestscor.innerHTML="最高分："+localStorage.zgf;
 			// 获取当前时间
 			let time=new Date();
 			this.starttime=time.getTime();
 			this.dtime=this.starttime;
 			// 分数
 			if(Number(localStorage.zgf)){
-				this.zgf.innerHTML=localStorage.zgf;
+				this.zgf.innerHTML="最高分："+localStorage.zgf;
 				this.maxfen=localStorage.zgf;
 			}else{
 				this.maxfen=0;
-				this.zgf.innerHTML=this.maxfen;
+				this.zgf.innerHTML="最高分："+this.maxfen;
 			}
 			this.changefenshu();
 			
@@ -142,7 +142,7 @@
 		}
 		// 改变分数
 		changefenshu(){
-			this.df.innerHTML=this.fenshu;
+			this.df.innerHTML="得分："+this.fenshu;
 			this.scor.innerHTML="得分："+this.fenshu;
 			if(this.maxfen<this.fenshu){
 				this.maxfen=this.fenshu;
@@ -319,7 +319,7 @@
 		// 游戏结束
 		gameover(){
 			localStorage.zgf=this.maxfen;
-			this.bestscor.innerHTML="最高分："+localStorage.zgf;
+//			this.bestscor.innerHTML="最高分："+localStorage.zgf;
 			clearInterval(this.t);
             for(let i=0;i<this.she.length;i++){
                 this.getElement(this.she[i]).classList.remove("she");
