@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动画</title>
+    <style>
+        canvas{
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="500" height="500"></canvas>
+    <script src="function.js"></script>
+    <script>
+        $(function(){
+            const canvas=$("canvas")[0];
+            let cobj=canvas.getContext("2d");
+            let x=200;
+            let y=200;
+            canvas.onmousemove=function(e){
+                x=e.offsetX;
+                y=e.offsetY;
+            }
+            class lizi{
+                constructor(canvas,cobj){
+                    this.canvas=canvas;
+                    this.cobj=cobj;
+                    this.x=x;
+                    this.y=y;
+                    this.r=Math.random()*3+3;
+                    this.speedX=4*Math.random()-2;
+                    this.speedY=-5;
+                    this.g=0.3;
+                    this.color=`rgb(${parseInt(Math.random()*255)},${parseInt(Math.random()*255)},${parseInt(Math.random()*255)})`;
+                }
+                draw(){
+                // 保存环境
+                    this.cobj.save();
+                // 移动
+                    this.cobj.translate(this.x,this.y);
+                    this.cobj.beginPath();
+                // 画圆
+
+                    this.cobj.arc(0,0,this.r,0,Math.PI*2);
+                // 填充
+                    this.cobj.fillStyle=this.color;
+                    this.cobj.fill();
+                // 还原画图环境 放回保存的位置
+                    this.cobj.restore();
+                }
+                // 动起来
+                update(){
+                    this.x+=this.speedX;
+                    this.speedY+=this.g;
+                    this.y+=this.speedY;
+                }
+            }
+
+            let arr=[];
+            let t=setInterval(function(){
+            // 清除画板
+                cobj.clearRect(0,0,500,500);
+                let liziobj=new lizi(canvas,cobj);
+//                在将每次新建的liziobj放在数组中
+                arr.push(liziobj);
+//                遍历数组，每个liziobj都调用draw() update()
+                for(let i=0;i<arr.length;i++){
+                    arr[i].draw();
+                    arr[i].update();
+                }
+                if(arr.length>=200){
+                    arr.shift();
+                }
+
+            },50)
+        })
+
+
+
+    </script>
+</body>
+</html>
