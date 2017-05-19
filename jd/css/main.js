@@ -51,7 +51,7 @@ $(function(){
 	const djsm=$(".miaoshafen")[0];
 	const djss=$(".miaoshamiao")[0];
 
-	let wuyi=new Date(2017,4,1,0,0,0);
+	let wuyi=new Date(2017,8,1,0,0,0);
 	let wydjs=new daojishi(djsh,djsm,djss,wuyi);
 	wydjs.play();
 	
