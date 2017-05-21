@@ -3,13 +3,25 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta name="description" content="Slicebox - 3D Image Slider with Fallback" />
+    <meta name="keywords" content="jquery, css3, 3d, webkit, fallback, slider, css3, 3d transforms, slices, rotate, box, automatic" />
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/jquery.fullPage.css">
-	<link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/demo.css">
+    <link rel="stylesheet" type="text/css" href="css/slicebox.css">
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="js/rem.js"></script>
+    <script src="js/modernizr.custom.46884.js"></script>
+
     <script src="js/jquery.js"></script>
     <script src="js/jquery.fullPage.js"></script>
     <script src="js/jquery.easing.js"></script>
+<script src="js/jquery.slicebox.js"></script>
+<script type="text/javascript" src="js/jquery.slicebox.min.js"></script>
 </head>
 <body>
 <nav>
@@ -122,187 +134,182 @@
     </div>
     <div class="section">
         <div class="slide">
-            <div class="zuopinArea">
-                <div class="neikuan">
-                    <div class="zuopinBox">
-                        <div class="zuopin_biaoti">Webpage</div>
-                        <label class="lines"></label>
-                        <div class="zuopin">
-                            <a href="jd/index.html" target="_blank">
-                                <img src="img/jd.jpg" alt="" class="zuopinXq_tm_tu1 col-lg-4 col-md-6 col-sm-12">
-                                <div class="zuopin_zhezhao">京东官网</div>
-                                <div class="border_top"></div>
-                                <div class="border_left"></div>
-                                <div class="border_bottom"></div>
-                                <div class="border_right"></div>
-                            </a>
-                            <a href="tm/index.html" target="_blank">
-                                <img src="img/tm.jpg" alt="" class="zuopinXq_tm_tu1 col-lg-4 col-md-6 col-sm-12">
-                                <div class="zuopin_zhezhao">天猫官网</div>
-                                <div class="border_top"></div>
-                                <div class="border_left"></div>
-                                <div class="border_bottom"></div>
-                                <div class="border_right"></div>
-                            </a>
-                            <a href="xm/index.html" target="_blank">
-                                <img src="img/mt.jpg" alt="" class="zuopinXq_tm_tu1 col-lg-4 col-md-6 col-sm-12">
-                                <div class="zuopin_zhezhao">小米官网</div>
-                                <div class="border_top"></div>
-                                <div class="border_left"></div>
-                                <div class="border_bottom"></div>
-                                <div class="border_right"></div>
-                            </a>
-                            <a href="yd/index.html" target="_blank">
-                                <img src="img/yd.jpg" alt="" class="zuopinXq_tm_tu1 col-lg-4 col-md-6 col-sm-12">
-                                <div class="zuopin_zhezhao">中国移动官网</div>
-                                <div class="border_top"></div>
-                                <div class="border_left"></div>
-                                <div class="border_bottom"></div>
-                                <div class="border_right"></div>
-                            </a>
-                            <a href="iphone/index.html" target="_blank">
-                                <img src="img/pg.gif" alt="" class="zuopinXq_tm_tu1 col-lg-4 col-md-6 col-sm-12">
-                                <div class="zuopin_zhezhao">苹果官网</div>
-                                <div class="border_top"></div>
-                                <div class="border_left"></div>
-                                <div class="border_bottom"></div>
-                                <div class="border_right"></div>
-                            </a>
-                            <a href="fk/index.html" target="_blank">
-                                <img src="img/fk.png" alt="" class="zuopinXq_tm_tu1 col-lg-4 col-md-6 col-sm-12">
-                                <div class="zuopin_zhezhao">凡客官网</div>
-                                <div class="border_top"></div>
-                                <div class="border_left"></div>
-                                <div class="border_bottom"></div>
-                                <div class="border_right"></div>
-                            </a>
+            <div class="webpageBox">
+            <div class="neikuan">
+                <div class="webpage">
+                    <h1 class="biaoti">Webpage</h1>
+                    <div class="wrapper">
+
+                        <ul id="sb-slider" class="sb-slider">
+                            <li class="aa">
+                                <a href="fk/index.html" target="_blank">
+                                    <img src="img/fanke.jpg" alt="img1"/></a>
+                                <div class="sb-description">
+                                    <h3>凡客官网</h3>
+                                </div>
+                            </li>
+                            <li class="aa">
+                                <a href="jd/index.html" target="_blank"><img src="img/jingdong.jpg" alt="img2"/></a>
+                                <div class="sb-description">
+                                    <h3>京东官网</h3>
+                                </div>
+                            </li>
+                            <li class="aa">
+                                <a href="xm/index.html" target="_blank"><img src="img/xiaomi.jpg" alt="img1"/></a>
+                                <div class="sb-description">
+                                    <h3>小米官网</h3>
+                                </div>
+                            </li>
+                            <li class="aa">
+                                <a href="tm/index.html" target="_blank"><img src="img/tianmao.jpg" alt="img1"/></a>
+                                <div class="sb-description">
+                                    <h3>天猫官网</h3>
+                                </div>
+                            </li>
+                            <li class="aa">
+                                <a href="yd/index.html" target="_blank">
+                                    <img src="img/yidong.jpg" alt="img1"/>
+                                </a>
+                                <div class="sb-description">
+                                    <h3>中国移动</h3>
+                                </div>
+                            </li>
+                            <li class="aa">
+                                <a href="yt/index.html" target="_blank">
+                                    <img src="img/yintai.jpg" alt="img1"/>
+                                </a>
+                                <div class="sb-description">
+                                    <h3>银泰官网</h3>
+                                </div>
+                            </li>
+                            <li class="aa">
+                                <a href="iphone/index.html" target="_blank"><img src="img/pingguo.jpg" alt="img1"/></a>
+                                <div class="sb-description">
+                                    <h3>苹果官网</h3>
+                                </div>
+                            </li>
+                            <li class="aa">
+                                <a href="sf/index.html" target="_blank"><img src="img/shafa.jpg" alt="img1"/></a>
+                                <div class="sb-description">
+                                    <h3>沙发官网</h3>
+                                </div>
+                            </li>
+                            <li class="aa">
+                                <a href="yddtm/index.html" target="_blank"><img src="img/tianmao.jpg" alt="img1"/></a>
+                                <div class="sb-description">
+                                    <h3>移动端天猫</h3>
+                                </div>
+                            </li>
+                            <li class="aa">
+                                <a href="juran/index.html" target="_blank"><img src="img/logo.jpg" alt="img1"/></a>
+                                <div class="sb-description">
+                                    <h3>居然之家</h3>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div id="shadow" class="shadow"></div>
+
+                        <div id="nav-arrows" class="nav-arrows">
+                            <a href="#">Next</a>
+                            <a href="#">Previous</a>
                         </div>
+
+                        <div id="nav-dots" class="nav-dots">
+                            <span class="nav-dot-current"></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="slide">
-            <div class="zuopinArea">
-                <div class="neikuan">
-                    <div class="zuopinBox">
-                        <div class="zuopin_biaoti">Webpage</div>
-                        <label class="lines"></label>
-                        <div class="zuopin">
-                            <a href="sf/index.html" target="_blank">
-                                <img src="img/sf.jpg" alt="" class="zuopinXq_tm_tu1 col-lg-4 col-md-6 col-sm-12">
-                                <div class="zuopin_zhezhao">沙发网</div>
-                                <div class="border_top"></div>
-                                <div class="border_left"></div>
-                                <div class="border_bottom"></div>
-                                <div class="border_right"></div>
-                            </a>
-                            <a href="yt/index.html" target="_blank">
-                                <img src="img/yt.jpg" alt="" class="zuopinXq_tm_tu1 col-lg-4 col-md-6 col-sm-12">
-                                <div class="zuopin_zhezhao">银泰网</div>
-                                <div class="border_top"></div>
-                                <div class="border_left"></div>
-                                <div class="border_bottom"></div>
-                                <div class="border_right"></div>
-                            </a>
-                            <a href="yddtm/index.html" target="_blank">
-                                <img src="img/tm.jpg" alt="" class="zuopinXq_tm_tu1 col-lg-4 col-md-6 col-sm-12">
-                                <div class="zuopin_zhezhao">移动端天猫</div>
-                                <div class="border_top"></div>
-                                <div class="border_left"></div>
-                                <div class="border_bottom"></div>
-                                <div class="border_right"></div>
-                            </a>
-                            <a href="juran/index.html" target="_blank">
-                                <img src="img/logo.jpg" alt="" class="zuopinXq_tm_tu1 col-lg-4 col-md-6 col-sm-12">
-                                <div class="zuopin_zhezhao">居然之家</div>
-                                <div class="border_top"></div>
-                                <div class="border_left"></div>
-                                <div class="border_bottom"></div>
-                                <div class="border_right"></div>
-                            </a>
-                            <a href="daziyouxi/index.html" target="_blank">
-                                <img src="img/logo.png" alt="" class="zuopinXq_tm_tu1 col-lg-4 col-md-6 col-sm-12">
-                                <div class="zuopin_zhezhao">打字游戏</div>
-                                <div class="border_top"></div>
-                                <div class="border_left"></div>
-                                <div class="border_bottom"></div>
-                                <div class="border_right"></div>
-                            </a>
-                            <a href="sl/index.html" target="_blank">
-                                <img src="img/zuopin1.jpg" alt="" class="zuopinXq_tm_tu1 col-lg-4 col-md-6 col-sm-12">
-                                <div class="zuopin_zhezhao">扫雷</div>
-                                <div class="border_top"></div>
-                                <div class="border_left"></div>
-                                <div class="border_bottom"></div>
-                                <div class="border_right"></div>
-                            </a>
-
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
+
         <div class="slide">
-            <div class="zuopinArea">
-                <div class="neikuan">
-                    <div class="zuopinBox">
-                        <div class="zuopin_biaoti">Game</div>
-                        <label class="lines"></label>
-                        <div class="zuopin">
-                            <a href="tanchishe/index.html" target="_blank">
-                                <img src="img/zuopin1.jpg" alt="" class="zuopinXq_tm_tu1 col-lg-4 col-md-6 col-sm-12">
-                                <div class="zuopin_zhezhao">贪吃蛇</div>
-                                <div class="border_top"></div>
-                                <div class="border_left"></div>
-                                <div class="border_bottom"></div>
-                                <div class="border_right"></div>
-                            </a>
-                            <a href="todolist/index.html" target="_blank">
-                                <img src="img/zuopin1.jpg" alt="" class="zuopinXq_tm_tu1 col-lg-4 col-md-6 col-sm-12">
-                                <div class="zuopin_zhezhao">todolist</div>
-                                <div class="border_top"></div>
-                                <div class="border_left"></div>
-                                <div class="border_bottom"></div>
-                                <div class="border_right"></div>
-                            </a>
-                            <a href="huaban/index.html" target="_blank">
-                                <img src="img/zuopin1.jpg" alt="" class="zuopinXq_tm_tu1 col-lg-4 col-md-6 col-sm-12">
-                                <div class="zuopin_zhezhao">画板</div>
-                                <div class="border_top"></div>
-                                <div class="border_left"></div>
-                                <div class="border_bottom"></div>
-                                <div class="border_right"></div>
-                            </a>
-                            <a href="tianqi/index.html" target="_blank">
-                                <img src="img/zuopin1.jpg" alt="" class="zuopinXq_tm_tu1 col-lg-4 col-md-6 col-sm-12">
-                                <div class="zuopin_zhezhao">天气预报</div>
-                                <div class="border_top"></div>
-                                <div class="border_left"></div>
-                                <div class="border_bottom"></div>
-                                <div class="border_right"></div>
-                            </a>
-                            <a href="donghua/index.html" target="_blank">
-                                <img src="img/zuopin1.jpg" alt="" class="zuopinXq_tm_tu1 col-lg-4 col-md-6 col-sm-12">
-                                <div class="zuopin_zhezhao">粒子动画</div>
-                                <div class="border_top"></div>
-                                <div class="border_left"></div>
-                                <div class="border_bottom"></div>
-                                <div class="border_right"></div>
-                            </a>
+            <div class="webpageBox">
+                <div class="webpage">
+                    <h1 class="biaoti">Webpage</h1>
+                     <ul class="accordion" id="accordion">
+                        <li class="bg1">
+                            <div class="heading">打字游戏</div>
+                            <div class="bgDescription"></div>
+                            <div class="description">
+                                <h2>打字游戏</h2>
+                                <a href="daziyouxi/index.html" target="_blank">
+                                    <img src="img/zuopin1.jpg" alt="">
+                                </a>
+                            </div>
+                        </li>
+                        <li class="bg2">
+                            <div class="heading">扫雷</div>
+                            <div class="bgDescription"></div>
+                            <div class="description">
+                                <h2>扫雷</h2>
+                                <a href="sl/index.html" target="_blank">
+                                    <img src="img/zuopin1.jpg" alt="">
+                                </a>
+                            </div>
 
-                            <a href="tianqi/index.html">
-                                <img src="img/zuopin1.jpg" alt="" class="zuopinXq_tm_tu1 col-lg-4 col-md-6 col-sm-12">
-                                <div class="zuopin_zhezhao">good</div>
-                                <div class="border_top"></div>
-                                <div class="border_left"></div>
-                                <div class="border_bottom"></div>
-                                <div class="border_right"></div>
-                            </a>
+                        </li>
+                        <li class="bg3">
+                            <div class="heading">贪吃蛇</div>
+                            <div class="bgDescription"></div>
+                            <div class="description">
+                                <h2>贪吃蛇</h2>
+                               <a href="tanchishe/index.html" target="_blank">
+                                    <img src="img/zuopin1.jpg" alt="">
+                                </a>
+                            </div>
 
+                        </li>
+                        <li class="bg4 bleft">
+                            <div class="heading">画板</div>
+                            <div class="bgDescription"></div>
+                            <div class="description">
+                                <h2>画板</h2>
+                                <a href="huaban/index.html" target="_blank">
+                                    <img src="img/zuopin1.jpg" alt="">
+                                </a>
+                            </div>
 
-                        </div>
-                    </div>
-                </div>
+                        </li>
+                        <li class="bg5">
+                            <div class="heading">todolist</div>
+                            <div class="bgDescription"></div>
+                            <div class="description">
+                                <h2>todolist</h2>
+                               <a href="todolist/index.html" target="_blank">
+                                    <img src="img/zuopin1.jpg" alt="">
+                                </a>
+                            </div>
+
+                        </li>
+                        <li class="bg6 bleft">
+                            <div class="heading">天气预报</div>
+                            <div class="bgDescription"></div>
+                            <div class="description">
+                                <h2>天气预报</h2>
+                                <a href="tianqi/index.html" target="_blank">
+                                    <img src="img/zuopin1.jpg" alt="">
+                                </a>
+                            </div>
+
+                        </li>
+                    </ul>
+                   <!--  <p class="youxijieshao">
+                        打字游戏：首先创建字母，再字母移动，再之后就是检测键盘按下的键与字母是否匹配；
+                        Typing game: first create letters, letters to move again, then is to detect the keyboard by pressing the key matches with letters;
+                    </p> -->
+            </div>
             </div>
         </div>
     </div>
@@ -401,7 +408,8 @@
                     $(".zuopin_biaoti").animate({top:-300},1000,"easeInOutBounce");
                     $(".lines").animate({top:-360},1000,"easeInOutBounce");
                 }
-            }
+            },
+
         });
         $(".bannerjiantou").click(function () {
             if($(".bannerjiantou").hasClass("active")){
@@ -420,10 +428,106 @@
             })
         })
 
+        var Page = (function() {
+
+                    var $navArrows = $( '#nav-arrows' ).hide(),
+                        $navDots = $( '#nav-dots' ).hide(),
+                        $nav = $navDots.children( 'span' ),
+                        $shadow = $( '#shadow' ).hide(),
+                        slicebox = $( '#sb-slider' ).slicebox( {
+                            onReady : function() {
+
+                                $navArrows.show();
+                                $navDots.show();
+                                $shadow.show();
+
+                            },
+                            onBeforeChange : function( pos ) {
+
+                                $nav.removeClass( 'nav-dot-current' );
+                                $nav.eq( pos ).addClass( 'nav-dot-current' );
+
+                            },
+                             interval:6000,  
+                             orientation : "r",
+                             perspective : 800, //透视点距离，可以通过改变其值查看效果 
+                                cuboidsCount : 5,
+                                // cuboidsRandom : true, 
+                                // maxCuboidsCount : 5, //设置一个值用来规定最大的 cuboidsCount 值 
+                                // colorHiddenSides : "#333", //隐藏的幻灯片的颜色 
+                                // sequentialFactor : 150, //幻灯片切换时间（毫秒数） 
+                                speed : 600, //每一块3D立方体的速度 
+                                autoplay : true, //是否自动开始切换 
+                                         
+                        } ),
+                        
+                        init = function() {
+
+                            initEvents();
+                            
+                        },
+                        initEvents = function() {
+
+                            // add navigation events
+                            $navArrows.children( ':first' ).on( 'click', function() {
+
+                                slicebox.next();
+                                return false;
+
+                            } );
+
+                            $navArrows.children( ':last' ).on( 'click', function() {
+                                
+                                slicebox.previous();
+                                return false;
+
+                            } );
+
+                            $nav.each( function( i ) {
+                            
+                                $( this ).on( 'click', function( event ) {
+                                    
+                                    var $dot = $( this );
+                                    
+                                    if( !slicebox.isActive() ) {
+
+                                        $nav.removeClass( 'nav-dot-current' );
+                                        $dot.addClass( 'nav-dot-current' );
+                                    
+                                    }
+                                    
+                                    slicebox.jump( i + 1 );
+                                    return false;
+                                
+                                } );
+                                
+                            } );
+
+                        };
+
+                        return { init : init };
+
+                })();
+
+                Page.init();                
 
 
-
-
+         $('#accordion > li').hover(
+                    function () {
+                        var $this = $(this);
+                        $this.stop().animate({'width':'420px'},500);
+                        $('.heading',$this).stop(true,true).fadeOut();
+                        $('.bgDescription',$this).stop(true,true).slideDown(500);
+                        $('.description',$this).stop(true,true).fadeIn();
+                    },
+                    function () {
+                        var $this = $(this);
+                        $this.stop().animate({'width':'100px'},1000);
+                        $('.heading',$this).stop(true,true).fadeIn();
+                        $('.description',$this).stop(true,true).fadeOut(500);
+                        $('.bgDescription',$this).stop(true,true).slideUp(700);
+                    }
+                );
 
 
 
