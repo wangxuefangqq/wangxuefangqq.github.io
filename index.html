@@ -21,6 +21,25 @@
     <script src="js/jquery.easing.js"></script>
     <script src="js/jquery.slicebox.js"></script>
     <script type="text/javascript" src="js/jquery.slicebox.min.js"></script>
+    <style>
+        .sb-description{
+            background: none;
+            opacity: 0;
+            padding: 0;
+        }
+        .accordion{
+            top:0;
+            bottom: 0;
+            left: 0;
+            right:0;
+            margin: auto;
+            height:500px;
+        }
+        /*ul.accordion li{*/
+            /*width:200px;*/
+            /*height:200px;*/
+        /*}*/
+    </style>
 </head>
 <body>
 <nav>
@@ -28,7 +47,6 @@
         <span class="navBox clear ">王雪芳的主页</span>
         <a  class="navBox1 clear col-lg-none col-md-none col-sm-inblock">菜单</a>
         <a href="#p5" data-menuanchor="p5" class="navBox1 clear col-lg-inblock col-md-inblock col-sm-none">联系方式</a>
-
         <a href="#p4" data-menuanchor="p4" class="navBox1 clear col-lg-inblock col-md-inblock col-sm-none">作品展示</a>
         <a href="#p3" data-menuanchor="p3" class="navBox1 clear col-lg-inblock col-md-inblock col-sm-none">技能特长</a>
         <a href="#p2" data-menuanchor="p2" class="navBox1 clear col-lg-inblock col-md-inblock col-sm-none">关于我的</a>
@@ -42,15 +60,11 @@
         <div class="bannerArea">
             <div class="bannerBox">
                 <div class="bannerqu">
-                    <div class="banner_jieshao">
+                    <div class="banner_jieshao" style="display: flex;flex-direction: column;">
                         <p>Welcome to my personal page</p>
-                        <i>Please follow me and enter my little world</i>
-                        <span>I am wangxuefang</span>
-                    </div>
-                    <div class="banner_self">
-                        <li>Age:23</li>
-                        <li>Professional:前端工程师</li>
-                        <li>Home:太原</li>
+                        <!--<i>Please follow me and enter my little world</i>-->
+                        <span>王雪芳</span>
+                        <span>前端工程师</span>
                     </div>
                     <i class="iconfont bannerjiantou">&#xe606;</i>
                 </div>
@@ -83,14 +97,19 @@
                     <h3>My Skills</h3>
                     <label class="line"></label>
                     <div class="skill_left">
-                        <h4>experience</h4>
+                        <h4>Advantage</h4>
                         <p>
-                            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters.
+
                         </p>
-                        <p>As opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search of lorem ipsum</p>
+                        <p>
+                            1.喜欢编写代码，高效、高质地完成代码编写，符合代码规范，有良好的合作精神，具有很强的学习能力和对新技术的追求精神。<br>
+                            2.熟悉Bootstrap、Swiper、Fullpage、React、Vue等主流插件和框架，并实现PC端、移动端以及响应式页面的布局和交互效果<br>
+                            3.熟悉PHP语言、node以及MySql数据库，搭建后台管理界面<br>
+                            4.有移动端的页面开发经验，掌握PhotoShop软件基本使用。
+                        </p>
                     </div>
                     <div class="skills-right">
-                        <p>HTML</p>
+                        <p>HTML、CSS</p>
                         <div class="skill_html">
                             <div class="skill_html_t"></div>
                             <i>0</i>
@@ -99,7 +118,7 @@
                                 <div class="skill_html_xk"></div>
                             </div>
                         </div>
-                        <p>CSS</p>
+                        <p>JavaScript、jQuery</p>
                         <div class="skill_html">
                             <div class="skill_html_t skill_css"></div>
                             <i>0</i>
@@ -108,7 +127,7 @@
                                 <div class="skill_html_xk"></div>
                             </div>
                         </div>
-                        <p>JavaScript</p>
+                        <p>react、vue</p>
                         <div class="skill_html">
                             <div class="skill_html_t skill_js"></div>
                             <i>0</i>
@@ -117,12 +136,12 @@
                                 <div class="skill_html_xk"></div>
                             </div>
                         </div>
-                        <p>jQuery</p>
+                        <p>php、node.js</p>
                         <div class="skill_html">
                             <div class="skill_html_t skill_jq"></div>
                             <i>0</i>
                             <span>100</span>
-                            <div class="skill_html_bl skill_jq_bl">88
+                            <div class="skill_html_bl skill_jq_bl">80
                                 <div class="skill_html_xk"></div>
                             </div>
                         </div>
@@ -136,92 +155,86 @@
             <div class="webpageBox">
             <div class="neikuan">
                 <div class="webpage">
-                    <h1 class="biaoti">Webpage</h1>
+                    <h1 class="biaoti">Work</h1>
                     <div class="wrapper">
 
                         <ul id="sb-slider" class="sb-slider">
                             <li class="aa">
-                                <a href="fk/index.html" target="_blank">
-                                    <img src="img/fanke.jpg" alt="img1"/></a>
+                                <a href="http://wxfktv.duapp.com" target="_blank">
+                                    <img src="img/ktv.jpeg" alt="img1"/></a>
                                 <div class="sb-description">
-                                    <h3>凡客官网</h3>
+                                    <h3>乐迪KTVAPP</h3>
                                 </div>
                             </li>
                             <li class="aa">
-                                <a href="jd/index.html" target="_blank"><img src="img/jingdong.jpg" alt="img2"/></a>
+                                <a href="http://suixinchang.duapp.com" target="_blank"><img src="img/pexels-photo-374703.jpeg" alt="img2"/></a>
                                 <div class="sb-description">
-                                    <h3>京东官网</h3>
+                                    <h3>嗨唱APP</h3>
                                 </div>
                             </li>
                             <li class="aa">
-                                <a href="xm/index.html" target="_blank"><img src="img/xiaomi.jpg" alt="img1"/></a>
+                                <a href="http://nodetoutiao.duapp.com" target="_blank"><img src="img/pexels-photo-242492.jpeg" alt="img1"/></a>
                                 <div class="sb-description">
-                                    <h3>小米官网</h3>
+                                    <h3>悦闻APP</h3>
                                 </div>
                             </li>
                             <li class="aa">
-                                <a href="tm/index.html" target="_blank"><img src="img/tianmao.jpg" alt="img1"/></a>
+                                <a href="http://toseemovie.duapp.com" target="_blank"><img src="img/pexels-photo-274937.jpeg" alt="img1"/></a>
                                 <div class="sb-description">
-                                    <h3>天猫官网</h3>
+                                    <h3>看客电影</h3>
                                 </div>
                             </li>
-                            <li class="aa">
-                                <a href="yd/index.html" target="_blank">
-                                    <img src="img/yidong.jpg" alt="img1"/>
-                                </a>
-                                <div class="sb-description">
-                                    <h3>中国移动</h3>
-                                </div>
-                            </li>
-                            <li class="aa">
-                                <a href="yt/index.html" target="_blank">
-                                    <img src="img/yintai.jpg" alt="img1"/>
-                                </a>
-                                <div class="sb-description">
-                                    <h3>银泰官网</h3>
-                                </div>
-                            </li>
-                            <li class="aa">
-                                <a href="iphone/index.html" target="_blank"><img src="img/pingguo.jpg" alt="img1"/></a>
-                                <div class="sb-description">
-                                    <h3>苹果官网</h3>
-                                </div>
-                            </li>
-                            <li class="aa">
-                                <a href="sf/index.html" target="_blank"><img src="img/shafa.jpg" alt="img1"/></a>
-                                <div class="sb-description">
-                                    <h3>沙发官网</h3>
-                                </div>
-                            </li>
-                            <li class="aa">
-                                <a href="yddtm/index.html" target="_blank"><img src="img/tianmao.jpg" alt="img1"/></a>
-                                <div class="sb-description">
-                                    <h3>移动端天猫</h3>
-                                </div>
-                            </li>
-                            <li class="aa">
-                                <a href="juran/index.html" target="_blank"><img src="img/logo.jpg" alt="img1"/></a>
-                                <div class="sb-description">
-                                    <h3>居然之家</h3>
-                                </div>
-                            </li>
+                            <!--<li class="aa">-->
+                                <!--<a href="yd/index.html" target="_blank">-->
+                                    <!--<img src="img/yidong.jpg" alt="img1"/>-->
+                                <!--</a>-->
+                                <!--<div class="sb-description">-->
+                                    <!--<h3>中国移动</h3>-->
+                                <!--</div>-->
+                            <!--</li>-->
+                            <!--<li class="aa">-->
+                                <!--<a href="yt/index.html" target="_blank">-->
+                                    <!--<img src="img/yintai.jpg" alt="img1"/>-->
+                                <!--</a>-->
+                                <!--<div class="sb-description">-->
+                                    <!--<h3>银泰官网</h3>-->
+                                <!--</div>-->
+                            <!--</li>-->
+                            <!--<li class="aa">-->
+                                <!--<a href="iphone/index.html" target="_blank"><img src="img/pingguo.jpg" alt="img1"/></a>-->
+                                <!--<div class="sb-description">-->
+                                    <!--<h3>苹果官网</h3>-->
+                                <!--</div>-->
+                            <!--</li>-->
+                            <!--<li class="aa">-->
+                                <!--<a href="sf/index.html" target="_blank"><img src="img/shafa.jpg" alt="img1"/></a>-->
+                                <!--<div class="sb-description">-->
+                                    <!--<h3>沙发官网</h3>-->
+                                <!--</div>-->
+                            <!--</li>-->
+                            <!--<li class="aa">-->
+                                <!--<a href="yddtm/index.html" target="_blank"><img src="img/tianmao.jpg" alt="img1"/></a>-->
+                                <!--<div class="sb-description">-->
+                                    <!--<h3>移动端天猫</h3>-->
+                                <!--</div>-->
+                            <!--</li>-->
+                            <!--<li class="aa">-->
+                                <!--<a href="juran/index.html" target="_blank"><img src="img/logo.jpg" alt="img1"/></a>-->
+                                <!--<div class="sb-description">-->
+                                    <!--<h3>居然之家</h3>-->
+                                <!--</div>-->
+                            <!--</li>-->
                         </ul>
 
                         <div id="shadow" class="shadow"></div>
 
-                        <div id="nav-arrows" class="nav-arrows">
-                            <a href="#">Next</a>
-                            <a href="#">Previous</a>
-                        </div>
+                        <!--<div id="nav-arrows" class="nav-arrows">-->
+                            <!--<a href="#">Next</a>-->
+                            <!--<a href="#">Previous</a>-->
+                        <!--</div>-->
 
-                        <div id="nav-dots" class="nav-dots">
+                        <div id="nav-dots" class="nav-dots" style="bottom: -26px;">
                             <span class="nav-dot-current"></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
                             <span></span>
                             <span></span>
                             <span></span>
@@ -236,8 +249,8 @@
         <div class="slide">
             <div class="webpageBox">
                 <div class="webpage">
-                    <h1 class="biaoti">Webpage</h1>
-                     <ul class="accordion" id="accordion">
+                    <h1 class="biaoti">Work</h1>
+                     <ul class="accordion" id="accordion" style="top: 0px;left: 0px;">
                         <li class="bg1">
                             <div class="heading">打字游戏</div>
                             <div class="bgDescription"></div>
@@ -259,50 +272,50 @@
                             </div>
 
                         </li>
-                        <li class="bg3">
-                            <div class="heading">贪吃蛇</div>
-                            <div class="bgDescription"></div>
-                            <div class="description">
-                                <h2>贪吃蛇</h2>
-                               <a href="tanchishe/index.html" target="_blank">
-                                    <img src="img/zuopin1.jpg" alt="">
-                                </a>
-                            </div>
+                        <!--<li class="bg3">-->
+                            <!--<div class="heading">贪吃蛇</div>-->
+                            <!--<div class="bgDescription"></div>-->
+                            <!--<div class="description">-->
+                                <!--<h2>贪吃蛇</h2>-->
+                               <!--<a href="tanchishe/index.html" target="_blank">-->
+                                    <!--<img src="img/zuopin1.jpg" alt="">-->
+                                <!--</a>-->
+                            <!--</div>-->
 
-                        </li>
-                        <li class="bg4 bleft">
-                            <div class="heading">画板</div>
-                            <div class="bgDescription"></div>
-                            <div class="description">
-                                <h2>画板</h2>
-                                <a href="huaban/index.html" target="_blank">
-                                    <img src="img/zuopin1.jpg" alt="">
-                                </a>
-                            </div>
+                        <!--</li>-->
+                        <!--<li class="bg4 bleft">-->
+                            <!--<div class="heading">画板</div>-->
+                            <!--<div class="bgDescription"></div>-->
+                            <!--<div class="description">-->
+                                <!--<h2>画板</h2>-->
+                                <!--<a href="huaban/index.html" target="_blank">-->
+                                    <!--<img src="img/zuopin1.jpg" alt="">-->
+                                <!--</a>-->
+                            <!--</div>-->
 
-                        </li>
-                        <li class="bg5">
-                            <div class="heading">todolist</div>
-                            <div class="bgDescription"></div>
-                            <div class="description">
-                                <h2>todolist</h2>
-                               <a href="todolist/index.html" target="_blank">
-                                    <img src="img/zuopin1.jpg" alt="">
-                                </a>
-                            </div>
+                        <!--</li>-->
+                        <!--<li class="bg5">-->
+                            <!--<div class="heading">todolist</div>-->
+                            <!--<div class="bgDescription"></div>-->
+                            <!--<div class="description">-->
+                                <!--<h2>todolist</h2>-->
+                               <!--<a href="todolist/index.html" target="_blank">-->
+                                    <!--<img src="img/zuopin1.jpg" alt="">-->
+                                <!--</a>-->
+                            <!--</div>-->
 
-                        </li>
-                        <li class="bg6 bleft">
-                            <div class="heading">天气预报</div>
-                            <div class="bgDescription"></div>
-                            <div class="description">
-                                <h2>天气预报</h2>
-                                <a href="tianqi/index.html" target="_blank">
-                                    <img src="img/zuopin1.jpg" alt="">
-                                </a>
-                            </div>
+                        <!--</li>-->
+                        <!--<li class="bg6 bleft">-->
+                            <!--<div class="heading">天气预报</div>-->
+                            <!--<div class="bgDescription"></div>-->
+                            <!--<div class="description">-->
+                                <!--<h2>天气预报</h2>-->
+                                <!--<a href="tianqi/index.html" target="_blank">-->
+                                    <!--<img src="img/zuopin1.jpg" alt="">-->
+                                <!--</a>-->
+                            <!--</div>-->
 
-                        </li>
+                        <!--</li>-->
                     </ul>
                    <!--  <p class="youxijieshao">
                         打字游戏：首先创建字母，再字母移动，再之后就是检测键盘按下的键与字母是否匹配；
@@ -371,13 +384,13 @@
                 if(index==3){
                     $(".skill_left").animate({height:500},1000,"easeInQuart");
                     $(".skill_html_t").css("width","93%");
-                    $(".skill_css").css("width","84%");
+                    $(".skill_css").css("width","90%");
                     $(".skill_js").css("width","80%");
-                    $(".skill_jq").css("width","88%");
+                    $(".skill_jq").css("width","80%");
                     $(".skill_html_bl").css("left",389);
                     $(".skill_css_bl").css("left",350);
                     $(".skill_js_bl").css("left",332);
-                    $(".skill_jq_bl").css("left",368);
+                    $(".skill_jq_bl").css("left",332);
                 }
                 if(index==4){
                     $(".zuopinXq_tm_tu1").slideDown(2000);
@@ -417,15 +430,15 @@
                 $.fn.fullpage.moveSectionDown();
             }
         })
-        $(".zuopin a").each(function (index,ele) {
-            $(ele).hover(function () {
-                $(".zuopin_zhezhao").eq(index).animate({left:0},1000,"linear");
-
-            },function () {
-                $(".zuopin_zhezhao").eq(index).animate({left:-300},1000,"linear");
-
-            })
-        })
+//        $(".zuopin a").each(function (index,ele) {
+//            $(ele).hover(function () {
+//                $(".zuopin_zhezhao").eq(index).animate({left:0},1000,"linear");
+//
+//            },function () {
+//                $(".zuopin_zhezhao").eq(index).animate({left:-300},1000,"linear");
+//
+//            })
+//        })
 
         var Page = (function() {
 
@@ -511,22 +524,22 @@
                 Page.init();                
 
 
-         $('#accordion > li').hover(
-                    function () {
-                        var $this = $(this);
-                        $this.stop().animate({'width':'420px'},500);
-                        $('.heading',$this).stop(true,true).fadeOut();
-                        $('.bgDescription',$this).stop(true,true).slideDown(500);
-                        $('.description',$this).stop(true,true).fadeIn();
-                    },
-                    function () {
-                        var $this = $(this);
-                        $this.stop().animate({'width':'100px'},1000);
-                        $('.heading',$this).stop(true,true).fadeIn();
-                        $('.description',$this).stop(true,true).fadeOut(500);
-                        $('.bgDescription',$this).stop(true,true).slideUp(700);
-                    }
-                );
+//         $('#accordion > li').hover(
+//                    function () {
+//                        var $this = $(this);
+//                        $this.stop().animate({'width':'420px'},500);
+//                        $('.heading',$this).stop(true,true).fadeOut();
+//                        $('.bgDescription',$this).stop(true,true).slideDown(500);
+//                        $('.description',$this).stop(true,true).fadeIn();
+//                    },
+//                    function () {
+//                        var $this = $(this);
+//                        $this.stop().animate({'width':'100px'},1000);
+//                        $('.heading',$this).stop(true,true).fadeIn();
+//                        $('.description',$this).stop(true,true).fadeOut(500);
+//                        $('.bgDescription',$this).stop(true,true).slideUp(700);
+//                    }
+//                );
 
 
 

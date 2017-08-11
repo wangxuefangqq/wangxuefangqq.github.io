@@ -1,19 +1,23 @@
 ul.accordion{
     list-style:none;   
-    position:absolute;
+    /*position:absolute;*/
     /*right:0;*/
-    top:140px;
-    left: 200px;
+    /*top:140px;*/
+    /*left: 200px;*/
     /*margin: auto;*/
     font-family: Cambria, serif;
     font-size: 16px;
     font-style: italic;
     line-height: 1.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 ul.accordion li{
+    margin-top: 100px;
     float:right;
-    width:100px;
-    height:480px;
+    width:300px;
+    height:300px;
     display:block;
     border-right:2px solid #fff;
     border-bottom:2px solid #fff;
@@ -27,9 +31,9 @@ ul.accordion li{
     -webkit-box-shadow:1px 3px 15px #555;
     box-shadow:1px 3px 15px #555;
 }
-ul.accordion li:first-child{
-    width: 420px;
-}
+/*ul.accordion li:first-child{*/
+    /*width: 420px;*/
+/*}*/
 ul.accordion li.bg1{
     background-image:url(../img/banner.jpg);
 }
