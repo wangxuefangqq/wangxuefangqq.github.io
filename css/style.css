@@ -52,9 +52,9 @@ ul.accordion li.bg5{
 ul.accordion li.bg6{
     background-image:url(../img/banner.jpg);
 }
-ul.accordion li.bleft{
-    border-left:2px solid #fff;
-}
+/*ul.accordion li.bleft{*/
+    /*border-left:2px solid #fff;*/
+/*}*/
 ul.accordion li .heading{
     background-color:#fff;
     padding:10px;
@@ -71,13 +71,13 @@ ul.accordion li .heading{
 }
 ul.accordion li .description{
     position:absolute;
-    width:480px;
-    height:175px;
+    width:300px;
+    height:300px;
     bottom:0px;
     left:0px;
-    display:none;
+    display: none;
 }
-ul.accordion li .description h2{
+ul.accordion li h2{
     text-transform:uppercase;
     font-style:normal;
     font-weight:bold;
@@ -88,7 +88,7 @@ ul.accordion li .description h2{
     margin:0px 0px 15px 20px;
     text-shadow:-1px -1px 1px #ccc;
 }
-ul.accordion li .description p{
+ul.accordion li p{
     line-height:14px;
     margin:10px 22px;
     font-family: "Trebuchet MS", sans-serif;
@@ -99,20 +99,23 @@ ul.accordion li .description p{
     letter-spacing: normal;
     line-height: 1.6em;
 }
-ul.accordion li .description a{
+ul.accordion li a{
+    display: block;
     position:absolute;
-    bottom:5px;
-    left:20px;
+    width:100%;
+    height:100%;
+    bottom:0;
+    left:0;
     text-transform:uppercase;
     font-style:normal;
     font-size:11px;
     text-decoration:none;
     color:#888;
 }
-ul.accordion li .description a:hover{
-    color:#333;
-    text-decoration:underline;
-}
+/*ul.accordion li .description a:hover{*/
+    /*color:#333;*/
+    /*text-decoration:underline;*/
+/*}*/
 
 ul.accordion li .bgDescription{
     /*background:transparent url(../img/tm.jpg) repeat-x top left;*/

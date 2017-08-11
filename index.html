@@ -77,7 +77,7 @@
                <div class="aboutBox">
                    <h3>About Me</h3>
                    <label class="line"></label>
-                   <img src="img/me.jpg" alt="">
+                   <img src="img/MTXX_20170806163248.jpg" alt="">
                    <p class="jieshao">我是一位前端工程师,在专业技能上，为适应社会发展的需求，我认真学习各种专业知识，
                        发挥自己的特长;挖掘自身的潜力，结合每年的暑期社会实践机会，
                        从而逐步提高了自己的学习能力和分析处理问题的能力以及一定的协调组织和管理能力。希望2017更好。</p>
@@ -252,24 +252,19 @@
                     <h1 class="biaoti">Work</h1>
                      <ul class="accordion" id="accordion" style="top: 0px;left: 0px;">
                         <li class="bg1">
+                            <a href="daziyouxi/index.html" target="_blank">
                             <div class="heading">打字游戏</div>
                             <div class="bgDescription"></div>
-                            <div class="description">
-                                <h2>打字游戏</h2>
-                                <a href="daziyouxi/index.html" target="_blank">
-                                    <img src="img/zuopin1.jpg" alt="">
-                                </a>
-                            </div>
+                            </a>
+
                         </li>
                         <li class="bg2">
-                            <div class="heading">扫雷</div>
-                            <div class="bgDescription"></div>
-                            <div class="description">
-                                <h2>扫雷</h2>
-                                <a href="sl/index.html" target="_blank">
-                                    <img src="img/zuopin1.jpg" alt="">
-                                </a>
-                            </div>
+                            <a href="sl/index.html" target="_blank">
+                                <div class="heading">扫雷</div>
+                                <div class="bgDescription"></div>
+
+                            </a>
+
 
                         </li>
                         <!--<li class="bg3">-->
@@ -366,7 +361,7 @@
             anchors:["p1","p2","p3","p4","p5"],
             fixedElements:"nav",
             menu:"nav",
-            controlArrowColor:"#78b3dd",
+            controlArrowColor:"#f4fffc",
             verticalCentered: false,
             navigationColor:"#c3dfdf",
             afterLoad:function (an,index) {
@@ -524,22 +519,23 @@
                 Page.init();                
 
 
-//         $('#accordion > li').hover(
-//                    function () {
-//                        var $this = $(this);
+         $('#accordion > li').click(
+
+                    function () {
+                        var $this = $(this);
 //                        $this.stop().animate({'width':'420px'},500);
 //                        $('.heading',$this).stop(true,true).fadeOut();
 //                        $('.bgDescription',$this).stop(true,true).slideDown(500);
-//                        $('.description',$this).stop(true,true).fadeIn();
-//                    },
-//                    function () {
-//                        var $this = $(this);
+                        $('.description',$this).stop(true,true).fadeIn();
+                    },
+                    function () {
+                        var $this = $(this);
 //                        $this.stop().animate({'width':'100px'},1000);
 //                        $('.heading',$this).stop(true,true).fadeIn();
 //                        $('.description',$this).stop(true,true).fadeOut(500);
-//                        $('.bgDescription',$this).stop(true,true).slideUp(700);
-//                    }
-//                );
+                        $('.bgDescription',$this).stop(true,true).slideUp(700);
+                    }
+                );
 
 
 
